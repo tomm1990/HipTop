@@ -1,5 +1,6 @@
+
 //------------Connect to mongodbon mLab via Mongoose---------------//
-const consts = require('./consts/constring'),
+var consts = require('./consts/constring'),
     mongoose = require('mongoose'),
     //The server option auto_reconnect is defaulted to true
      options = {
@@ -14,22 +15,25 @@ const consts = require('./consts/constring'),
 
 // mongoose.Promise = global.Promise;
 mongoose.connect(consts.MLAB_KEY, options);
-
-const conn = mongoose.connection;//get default connection
+conn = mongoose.connection;//get default connection
 // Event handlers for Mongoose
-conn.on('error', function (err) {
+conn.on('error', function(err) {
+  if(err) console.log(`err -> ${err}`);
   console.log('Mongoose: Error: ' + err);
 });
 
-conn.on('open', function() {
+conn.on('open', function(err) {
+  if(err) console.log(`err -> ${err}`);
   console.log('Mongoose: Connection established');
 });
 
-conn.on('disconnected', function() {
+conn.on('disconnected', function(err){
+  if(err) console.log(`err -> ${err}`);
   console.log('Mongoose: Connection stopped, recconect');
   mongoose.connect(consts.MLAB_KEY, options);
 });
 
-conn.on('reconnected', function () {
+conn.on('reconnected', function(err) {
+  if(err) console.log(`err -> ${err}`);
   console.info('Mongoose reconnected!');
 });
