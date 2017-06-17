@@ -22,24 +22,25 @@ const express = require('express'),
 /*
  * app usages
  */
-//app.use(express.static('./public')); //for API
-app.use(express.static(mainRoute));
+app.use('/',express.static('./public')); //for API
+//app.use(express.static(mainRoute));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
 app.use( (req,res,next) => {
     // console.log(`mainRoute: ${mainRoute}`);
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");
+    res.set("Content-Type", "application/json");
     next();
 });
 
 /*
  * default rout
  */
-app.get('/', (req,res,next) => {
-  res.sendFile(path.join((__dirname,'index.html')));
-  req.next();
-});
+// app.get('/', (req,res,next) => {
+//   //res.sendFile(path.join((__dirname,'index.html')));
+//   req.next();
+// });
 
 /*** All routes ***/
 app.get('/getAllAlbums', hiptopController.getAllAlbums);
