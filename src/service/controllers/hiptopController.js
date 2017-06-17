@@ -1,15 +1,16 @@
 'use strict';
 
 const //data = require('./data/news.json'),
-  mongoose = require('mongoose'),
-  consts = require('../consts/constring'),
-  Album = require('../models/album'),
-  options = {
-    server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
-    replset: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }
-  };
+  //mongoose = require('mongoose'),
+  //consts = require('../consts/constring'),
+  Album = require('../models/album')
+  // options = {
+  //   server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
+  //   replset: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }
+  // }
+  ;
 
-mongoose.connect(consts.MLAB_KEY,options);
+//mongoose.connect(consts.MLAB_KEY,options);
 
 exports.getAllAlbums = (req,res)=>{
     console.log('getAllAlbums() ::');
