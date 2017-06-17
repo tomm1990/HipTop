@@ -1,0 +1,13 @@
+.thumbnail{
+  border:none;
+  background: none;
+}
+img{
+  border: 3px solid #1FCEA8;
+}
+.col-md-12{
+  background: #367F6C;
+}
+*{
+  // color:white;
+}

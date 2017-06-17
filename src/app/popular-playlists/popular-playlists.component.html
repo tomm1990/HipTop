@@ -1,77 +1,93 @@
 <div class="col-md-12">
 <div class="row col-md-8 col-md-offset-2">
   <h3>Popular playlists</h3>
-  <div class="col-md-3">
-    <div class="thumbnail">
-      <img src="..\..\assets\image\AlbumCover.png" alt="...">
-      <div class="caption">
-        <h4 class="text-center">DJ xyz</h4>
-        <p class="text-center">playlist name</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="thumbnail">
-      <img src="..\..\assets\image\AlbumCover.png" alt="...">
-      <div class="caption">
-        <h4 class="text-center">DJ xyz</h4>
-        <p class="text-center">playlist name</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="thumbnail">
-      <img src="..\..\assets\image\AlbumCover.png" alt="...">
-      <div class="caption">
-        <h4 class="text-center">DJ xyz</h4>
-        <p class="text-center">playlist name</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="thumbnail">
-      <img src="..\..\assets\image\AlbumCover.png" alt="...">
-      <div class="caption">
-        <h4 class="text-center">DJ xyz</h4>
-        <p class="text-center">playlist name</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="thumbnail">
-      <img src="..\..\assets\image\AlbumCover.png" alt="...">
-      <div class="caption">
-        <h4 class="text-center">DJ xyz</h4>
-        <p class="text-center">playlist name</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="thumbnail">
-      <img src="..\..\assets\image\AlbumCover.png" alt="...">
-      <div class="caption">
-        <h4 class="text-center">DJ xyz</h4>
-        <p class="text-center">playlist name</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="thumbnail">
-      <img src="..\..\assets\image\AlbumCover.png" alt="...">
-      <div class="caption">
-        <h4 class="text-center">DJ xyz</h4>
-        <p class="text-center">playlist name</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="thumbnail">
-      <img src="..\..\assets\image\AlbumCover.png" alt="...">
-      <div class="caption">
-        <h4 class="text-center">DJ xyz</h4>
-        <p class="text-center">playlist name</p>
-      </div>
-    </div>
-  </div>
+
+  <!--<app-book-item-->
+    <!--*ngFor="let bookEl of books"-->
+    <!--[book] = "bookEl"-->
+
+    <!--(itemSelected)="onItemSelected(bookEl)">-->
+  <!--</app-book-item>-->
+  <!---->
+
+  <app-popular-item
+    *ngFor="let albm of albums"
+    [album]="albm"
+
+  >
+  </app-popular-item>
+
+  <!--<div class="col-md-3">-->
+    <!--<div class="thumbnail">-->
+      <!--<img src="..\..\assets\image\AlbumCover.png" alt="...">-->
+      <!--<div class="caption">-->
+        <!--<h4 class="text-center">DJ xyz</h4>-->
+        <!--<p class="text-center">playlist name</p>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="col-md-3">-->
+    <!--<div class="thumbnail">-->
+      <!--<img src="..\..\assets\image\AlbumCover.png" alt="...">-->
+      <!--<div class="caption">-->
+        <!--<h4 class="text-center">DJ xyz</h4>-->
+        <!--<p class="text-center">playlist name</p>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="col-md-3">-->
+    <!--<div class="thumbnail">-->
+      <!--<img src="..\..\assets\image\AlbumCover.png" alt="...">-->
+      <!--<div class="caption">-->
+        <!--<h4 class="text-center">DJ xyz</h4>-->
+        <!--<p class="text-center">playlist name</p>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="col-md-3">-->
+    <!--<div class="thumbnail">-->
+      <!--<img src="..\..\assets\image\AlbumCover.png" alt="...">-->
+      <!--<div class="caption">-->
+        <!--<h4 class="text-center">DJ xyz</h4>-->
+        <!--<p class="text-center">playlist name</p>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="col-md-3">-->
+    <!--<div class="thumbnail">-->
+      <!--<img src="..\..\assets\image\AlbumCover.png" alt="...">-->
+      <!--<div class="caption">-->
+        <!--<h4 class="text-center">DJ xyz</h4>-->
+        <!--<p class="text-center">playlist name</p>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="col-md-3">-->
+    <!--<div class="thumbnail">-->
+      <!--<img src="..\..\assets\image\AlbumCover.png" alt="...">-->
+      <!--<div class="caption">-->
+        <!--<h4 class="text-center">DJ xyz</h4>-->
+        <!--<p class="text-center">playlist name</p>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="col-md-3">-->
+    <!--<div class="thumbnail">-->
+      <!--<img src="..\..\assets\image\AlbumCover.png" alt="...">-->
+      <!--<div class="caption">-->
+        <!--<h4 class="text-center">DJ xyz</h4>-->
+        <!--<p class="text-center">playlist name</p>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="col-md-3">-->
+    <!--<div class="thumbnail">-->
+      <!--<img src="..\..\assets\image\AlbumCover.png" alt="...">-->
+      <!--<div class="caption">-->
+        <!--<h4 class="text-center">DJ xyz</h4>-->
+        <!--<p class="text-center">playlist name</p>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
 </div>
 </div>

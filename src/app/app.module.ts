@@ -15,6 +15,7 @@ import { HeaderComponent } from './header/header.component';
 import { PopularPlaylistsComponent } from './popular-playlists/popular-playlists.component';
 import { PlaylistsContainerComponent } from './playlists-container/playlists-container.component';
 import { MusicSetComponent } from './music-set/music-set.component';
+import { PopularItemComponent } from './popular-playlists/popular-item/popular-item.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MusicSetComponent } from './music-set/music-set.component';
     HeaderComponent,
     PopularPlaylistsComponent,
     PlaylistsContainerComponent,
-    MusicSetComponent
+    MusicSetComponent,
+    PopularItemComponent
   ],
   imports: [
     BrowserModule,
