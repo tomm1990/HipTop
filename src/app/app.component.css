@@ -1,0 +1,15 @@
+app-sign-up-steps{
+  //border: 1px solid black;
+  padding-top: 30px;
+}
+
+app-music-player{
+  //border: 1px solid red;
+  padding-top: 150px;
+}
+app-genre-rating{
+  border:1px solid blue;
+}
+app-header{
+  background: #4D316A;
+}

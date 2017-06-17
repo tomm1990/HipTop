@@ -1,0 +1,26 @@
+h4{
+  font-weight: 800;
+  margin-top: 60px;
+}
+*{
+  text-align:center;
+}
+.btn{
+  margin-bottom: 10px;
+}
+.btn-warning{
+  background: yellow;
+  border: yellow;
+}
+.btn-warning:hover{
+  background: #cdcd00;
+  border: yellow;
+}
+
+.btn-primary{
+  margin-top: 20px;
+}
+
+.btn-link{
+  text-decoration: underline;
+}

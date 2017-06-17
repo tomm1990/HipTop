@@ -1,0 +1,16 @@
+.panel{
+  margin-top: 20px;
+  background: #1FCEA8;
+  border: #1FCEA8;
+  padding: 0px;
+}
+.progress{
+  margin-bottom: 0px;
+}
+.panel-body{
+  pading-bottom: 0px;
+}
+p{
+  margin-bottom: 0px;
+  padding: 0px;
+}

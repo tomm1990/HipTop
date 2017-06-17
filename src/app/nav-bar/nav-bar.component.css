@@ -1,0 +1,11 @@
+li{
+  padding-left: 30px;
+}
+li a:hover{
+  background: none;
+  text-decoration: underline;
+}
+
+span{
+  padding-right: 30px;
+}
