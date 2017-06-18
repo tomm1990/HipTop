@@ -3,7 +3,7 @@
 const
   mongoose = require('mongoose'),
   consts = require('../consts/constring'),
-  Album = require('../models/Album'),
+  Album = require('../models/Album2'),
   Song = require('../models/Song'),
   User = require('../models/User'),
   Comment = require('../models/Comment'),
