@@ -66,8 +66,6 @@ app.post('/getAllAlbums', hiptopController.getAllAlbums);
  */
 app.post('/removeAllAlbums',hiptopController.removeAllAlbums);
 
-
-
 /*
   saveNewAlbum
 
@@ -127,7 +125,6 @@ app.post('/saveNewAlbum',hiptopController.saveNewAlbum);
      code 200 : json All Songs
  */
 app.post('/getAllSongs',hiptopController.getAllSongs);
-
 
 /*
  getSongsByAlbumName
@@ -194,9 +191,11 @@ app.post('/saveNewSong',hiptopController.saveNewSong);
      code 502 : json Unable to Search documents
      code 503 : json Unable to Find documents
      code 200 : json Action Saved
- */
-app.post('/removeAllSongs',hiptopController.removeAllSongs);
 
+ @i.e
+     https://hiptop.herokuapp.com/removeAllSongs
+*/
+app.post('/removeAllSongs',hiptopController.removeAllSongs);
 
 /*
  signUpUser
@@ -222,6 +221,69 @@ app.post('/removeAllSongs',hiptopController.removeAllSongs);
      [password][1234]
  */
 app.post('/signUpUser',hiptopController.signUpUser);
+
+/*
+ removeAllUsers
+     This endpoint removes all users.
+
+ @type
+     POST
+
+ @param
+     -
+
+ @return
+     code 502 : json Unable to Search documents
+     code 503 : json Unable to Find documents
+     code 200 : json Action Saved
+
+ @i.e
+     https://hiptop.herokuapp.com/removeAllUsers
+ */
+app.post('/removeAllUsers',hiptopController.removeAllUsers);
+
+/*
+ getAmountAlbumByGenre
+     This endpoint retrieves specific amount of Albums by genre
+
+ @type
+     POST
+
+ @param
+     genre: String
+     amount: Number
+
+ @return
+     code 502 : json Unable to Search documents
+     code 200 : json albums
+
+ @i.e
+     https://hiptop.herokuapp.com/getAmountAlbumByGenre
+ */
+app.post('/getAmountAlbumByGenre',hiptopController.getAmountAlbumByGenre);
+
+/*
+ login
+     This endpoint retrieves specific amount of Albums by genre
+
+ @type
+     POST
+
+ @param
+     email: String
+     password: String
+
+ @return
+     code 502 : json Unable to Search documents
+     code 403 : json of email not exists
+     code 404 : json of wrong password
+     code 200 : json User
+
+ @i.e
+     https://hiptop.herokuapp.com/removeAllUsers
+ */
+app.post('/Login',hiptopController.login);
+
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);

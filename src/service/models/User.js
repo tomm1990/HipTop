@@ -18,38 +18,6 @@ var mongoose = require('mongoose'),
 
 module.exports = UserSchema;
 
-// TODO : need to verify inputs
-// userSchema.pre('save',(next)=>{
-//   UserSchema.findByIdAndUpdate(
-//     { id: 'entityId' },
-//     { $inc: { seq: 1} }
-//   )
-// });
-
-
-// userSchema.path('email').validate(
-//   (val)=>{
-//     // return false;
-//     console.log(`validating email : ${val}`);
-//     UserSchema.findOne({
-//       email : val
-//     },(err,result)=>{
-//       if(!result){
-//         console.log("!result -> "+result);
-//         return true;
-//       }
-//       if(err){
-//         console.log(`err -> Cant search for ${val}, err -> ${err}`);
-//         //return false;
-//       }
-//       if(result){
-//         console.log(`result -> Email already exists for ${result}`);
-//         //return false;
-//       }
-//       // return true;
-//     });
-//   },`Unable to create new user with this email`);
-
 userSchema.path('email').set(
   (val)=>{
     return String(val).toLowerCase();

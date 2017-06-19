@@ -12,33 +12,11 @@ const
      server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
      replset: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }
    },
-  jsonArr = [
-    {
-      "title":"missing params"
-    },
-    {
-      "title":"already exists"
-    },
-    {
-      "title":"error create"
-    },
-    {
-      "title":"error save"
-    },
-    {
-      "title" : "saved"
-    },
-    {
-      "title" : "cant search"
-    },
-    {
-      "title" : "cant find"
-    },
-  ],
   removeCounterIdentity = (schema) => {
       console.log('removeCounterIdentity()');
       console.log('schema -> '+schema );
-      var toCount = schema=="SongSchema"?400:400,
+      var toCount = schema == "SongSchema" ? 400 :
+          schema == "AlbumSchema" ? 700 : 0,
         conditions = { model : schema },
         update     = { count : toCount },
         opts       = { multi : true };
@@ -47,10 +25,10 @@ const
         model : schema
       }, (err,identity)=>{
         if(err){
-          console.log(jsonArr[5]); // Cant Search
+          console.log(consts.jsonArr[5]); // Cant Search
         }
         if(!identity){
-          console.log(jsonArr[6]); // Cant Find
+          console.log(consts.jsonArr[6]); // Cant Find
         }
         else {
           IdentityCounters.update(conditions,update,opts,
@@ -72,8 +50,8 @@ exports.getAllAlbums = (req,res)=>{
     Album.find({},
       (err,albums)=>{
           if(err){
-              console.log(jsonArr[5]);
-              res.status(503).json(jsonArr[5]);
+              console.log(consts.jsonArr[5]);
+              res.status(503).json(consts.jsonArr[5]);
           } else {
               console.log(albums);
               res.status(200).json(albums);
@@ -84,7 +62,6 @@ exports.getAllAlbums = (req,res)=>{
 exports.saveNewAlbum = (req,res)=>{
   // Logs
   console.log(`saveNewAlbum() ::`);
-  console.log(`id : ${req.body.id}`);
   console.log(`author : ${req.body.author}`);
   console.log(`title : ${req.body.title}`);
   console.log(`urlSrc : ${req.body.urlSrc}`);
@@ -97,70 +74,44 @@ exports.saveNewAlbum = (req,res)=>{
   // TODO check songId, commentId, likes
 
   // Vars
-  var _id = req.body.id,
-    _author = req.body.author,
-    _title = req.body.title,
-    _urlSrc = req.body.urlSrc,
-    _likes = req.body.likes,
-    _genre = req.body.genre,
-    _imgUrl = req.body.imgUrl,
-    _comment = req.body.comment,
-    _songId = req.body.songId,
+  var
+    _id = req.body.id,
     newAlbum = new Album({
-      id : _id,
-      author : _author,
-      title : _title,
-      urlSrc : _urlSrc,
-      likes : _likes,
-      genre : _genre,
-      imgUrl : _imgUrl,
-      comment : _comment,
-      songId : _songId
-    });
+      // id : _id, // Auto Generated
+      author : req.body.author,
+      title : req.body.title,
+      urlSrc : req.body.urlSrc,
+      likes : req.body.likes,
+      genre : req.body.genre,
+      imgUrl : req.body.imgUrl,
+      comment : req.body.comment,
+      songId : req.body.songId
+  });
 
   // Check if already exists
   Album.findOne({
     id : _id
   }, (err,album)=>{
       if(err){ // Server Issue, Internal Problem, Check Documents
-        console.log(jsonArr[2]);
-        return res.status(500).json(jsonArr[2]);
+        console.log(consts.jsonArr[2]);
+        return res.status(500).json(consts.jsonArr[2]);
       }
       if(album){ // If Album Exists
-        console.log(jsonArr[1]);
-        return res.status(404).json(jsonArr[1]);
+        console.log(consts.jsonArr[1]);
+        return res.status(404).json(consts.jsonArr[1]);
       }
       newAlbum.save( // Else save the album
         (err,savedAlbum) => {
           if(err) { // Error saving
             console.log(err);
-            return res.status(501).send(jsonArr[3]);
+            return res.status(501).send(consts.jsonArr[3]);
           }
           else { // Success
-            console.log(jsonArr[4]);
+            console.log(consts.jsonArr[4]);
             return res.status(200).send(savedAlbum);
           }
         }
       );
-  });
-};
-
-exports.removeAllAlbums = (req,res)=>{
-  console.log('removeAllAlbums() ::');
-  Album.find({},
-    (err,albums)=>{
-      if(err){
-        console.log(jsonArr[5]); // Cant Search
-        return res.status(502).json(jsonArr[5]);
-      }
-      if(!albums){
-        console.log(jsonArr[6]); // Cant Find
-        return res.status(503).json(jsonArr[6]);
-      }
-      Album.remove({}, // Else remove all albums
-        (err,result)=>{
-          return res.status(200).json(jsonArr[4]);
-      });
   });
 };
 
@@ -169,8 +120,8 @@ exports.getAllSongs = (req,res)=>{
     Song.find({},
       (err,songs)=>{
         if(err){
-          console.log(jsonArr[6]); // Cant Find
-          return res.status(503).json(jsonArr[6]);
+          console.log(consts.jsonArr[6]); // Cant Find
+          return res.status(503).json(consts.jsonArr[6]);
         } else {
           console.log(songs); // OK
           res.status(200).json(songs);
@@ -186,25 +137,25 @@ exports.getSongsByAlbumName = (req,res)=>{
     },(err,albums)=>{
       if(err){
         console.log(err); // Cant Search
-        return res.status(502).json(jsonArr[5]);
+        return res.status(502).json(consts.jsonArr[5]);
       }
       if(!albums){
-        console.log(jsonArr[6]); // Cant Find
-        return res.status(503).json(jsonArr[6]);
+        console.log(consts.jsonArr[6]); // Cant Find
+        return res.status(503).json(consts.jsonArr[6]);
       }
       Song.find({
         id : { $in : albums.songId }
-      },(err,songs)=>{
+      },(err,songs) => {
         if(err){
           console.log(err); // Cant Search
-          return res.status(504).json(jsonArr[5]);
+          return res.status(504).json(consts.jsonArr[5]);
         }
         if(!songs){
-          console.log(jsonArr[6]); // Cant Find
-          return res.status(505).json(jsonArr[5]);
+          console.log(consts.jsonArr[6]); // Cant Find
+          return res.status(505).json(consts.jsonArr[5]);
         }
         else {
-          console.log(jsongs); // OK
+          console.log(songs); // OK
           return res.status(200).json(songs);
         }
       });
@@ -235,21 +186,21 @@ exports.saveNewSong = (req,res)=>{
     title : req.body.title
   },(err,result)=>{
     if(err){
-      console.log(jsonArr[5]); // Cant Search
-      return res.status(502).json(jsonArr[5]);
+      console.log(consts.jsonArr[5]); // Cant Search
+      return res.status(502).json(consts.jsonArr[5]);
     }
     if(result){
-      console.log(jsonArr[1]); // Already Exists
-      return res.status(404).json(jsonArr[1]);
+      console.log(consts.jsonArr[1]); // Already Exists
+      return res.status(404).json(consts.jsonArr[1]);
     }
     newSong.save( // Save newSong
       (err,savedSong) => {
         if(err) { // Error saving
           console.log(err);
-          return res.status(501).send(jsonArr[3]);
+          return res.status(501).send(consts.jsonArr[3]);
         }
         else { // Success
-          console.log(jsonArr[4]);
+          console.log(consts.jsonArr[4]);
           return res.status(200).send(savedSong);
         }
       }
@@ -257,31 +208,87 @@ exports.saveNewSong = (req,res)=>{
   });
 };
 
+exports.removeAllAlbums = (req,res)=>{
+  console.log('removeAllAlbums()');
+  Album.find({}, // If exists
+    (err,albums) => {
+      if(err){
+        console.log(consts.jsonArr[5]); // Cant Search
+        return res.status(502).json(consts.jsonArr[5]);
+      }
+      if(!albums){
+        console.log(consts.jsonArr[6]); // Cant Find
+        return res.status(503).json(consts.jsonArr[6]);
+      }
+      Album.remove({}, // Else remove all albums
+        (err,result)=>{
+          return res.status(200).json(consts.jsonArr[4]);
+        });
+    });
+  removeCounterIdentity("AlbumSchema");
+};
+
 exports.removeAllSongs = (req,res)=>{
-  console.log('saveNewSong() ::');
+  console.log('removeAllSongs()');
   Song.find({}, // If exists
     (err,song) => {
       if(err){
-        console.log(jsonArr[5]); // Cant Search
-        return res.status(502).json(jsonArr[5]);
+        console.log(consts.jsonArr[5]); // Cant Search
+        return res.status(502).json(consts.jsonArr[5]);
       }
       if(!song){
-        console.log(jsonArr[6]); // Cant Find
-        return res.status(503).json(jsonArr[6]);
+        console.log(consts.jsonArr[6]); // Cant Find
+        return res.status(503).json(consts.jsonArr[6]);
       }
       Song.remove({}, // update counter
         (err,result)=>{
-          return res.status(200).json(jsonArr[4]);
+          return res.status(200).json(consts.jsonArr[4]);
         });
     });
   removeCounterIdentity("SongSchema");
 };
 
+exports.removeAllUsers = (req,res)=>{
+  console.log('removeAllUsers()');
+  User.find({}, // If exists
+    (err,user) => {
+      if(err){
+        console.log(consts.jsonArr[5]); // Cant Search
+        return res.status(502).json(consts.jsonArr[5]);
+      }
+      if(!user){
+        console.log(consts.jsonArr[6]); // Cant Find
+        return res.status(503).json(consts.jsonArr[6]);
+      }
+      User.remove({}, // update counter
+        (err,result)=>{
+          return res.status(200).json(consts.jsonArr[4]);
+        });
+    });
+};
+
+exports.getAmountAlbumByGenre = (req,res)=>{
+  console.log('getAmountAlbumByGenre()');
+  console.log(`req.body.genre -> ${req.body.genre} `);
+  console.log(`req.body.amount -> ${req.body.amount} `);
+  Album.find({
+    genre : req.body.genre,
+  },(err,albums)=>{
+    if(err){
+      console.log(`Cant search :: err -> ${err}`);
+      return res.status(502).json(consts.jsonArr[5]);
+    } else {
+      console.log(`All Albums :\n -> ${albums}`);
+      return res.status(200).json(albums);
+    }
+  }).limit(Number(req.body.amount));
+};
+
 exports.signUpUser = (req,res)=>{
   console.log('signUp() ::');
-  console.log(`id : ${req.body.email}`);
-  console.log(`id : ${req.body.name}`);
-  console.log(`id : ${req.body.password}`);
+  console.log(`req.body.email : ${req.body.email}`);
+  console.log(`req.body.name : ${req.body.name}`);
+  console.log(`req.body.password : ${req.body.password}`);
 
   // TODO : Change to adaptive
   var newUser = new User({
@@ -303,24 +310,52 @@ exports.signUpUser = (req,res)=>{
     email : req.body.email
   },(err,result)=>{
     if(err){
-      console.log(jsonArr[5]); // Cant Search
-      return res.status(502).json(jsonArr[5]);
+      console.log(consts.jsonArr[5]); // Cant Search
+      return res.status(502).json(consts.jsonArr[5]);
     }
     if(result){
-      console.log(jsonArr[1]); // Already Exists
-      return res.status(404).json(jsonArr[1]);
+      console.log(consts.jsonArr[1]); // Already Exists
+      return res.status(404).json(consts.jsonArr[1]);
     }
     newUser.save( // Save new document
       (err,savedUser) => {
         if(err) { // Error saving
           console.log(err);
-          return res.status(501).send(jsonArr[3]);
+          return res.status(501).send(consts.jsonArr[3]);
         }
         else { // Success
-          console.log(jsonArr[4]);
+          console.log(consts.jsonArr[4]);
           return res.status(200).send(savedUser);
         }
       }
     );
+  });
+};
+
+exports.login = (req,res)=>{
+  console.log('login()');
+  console.log(`req.body.email : ${req.body.email}`);
+  console.log(`req.body.password : ${req.body.password}`);
+
+  User.findOne({
+    email : req.body.email
+  }, (err,userJson) => {
+    if(err){ // Cant Search
+      console.log(`Cant search :: err -> ${err}`);
+      return res.status(502).json(consts.jsonArr[5]);
+    }
+    if(!userJson){
+      console.log(`Cant find :: userJson -> ${userJson}`);
+      return res.status(403).json(consts.jsonArr[7]);
+    }
+    else {
+      if(userJson.password!=req.body.password){
+        console.log(`Password is wrong :: error -> ${req.body.password}`);
+        return res.status(404).json(consts.jsonArr[8]);
+      } else {
+        console.log(userJson); // OK
+        res.status(200).json(userJson);
+      }
+    }
   });
 };

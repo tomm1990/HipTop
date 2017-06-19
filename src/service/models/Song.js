@@ -22,4 +22,25 @@ songSchema.plugin(autoIncrement.autoIncrement.plugin, {
 
 var SongSchema = mongoose.model('SongSchema', songSchema);
 
+// Validating title
+songSchema.path('title').set(
+  (val)=>{
+    // this runs first
+    return val;
+  });
+
+songSchema.path('title').validate(
+  (val)=>{
+    let valRaw = val;
+    // this runs second
+    console.log(`valRaw.length : ${valRaw.length}`);
+    return valRaw.length > 0;
+  }, `title is to short`);
+
+songSchema.pre('save',
+  (next) => {
+    // this runs last
+    return next();
+  });
+
 module.exports = SongSchema;
