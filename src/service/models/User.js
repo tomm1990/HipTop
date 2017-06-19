@@ -1,10 +1,10 @@
-var mongoose = require('mongoose'),
-  schema = mongoose.Schema,
+const mongoose = require('mongoose'),
+  schema = mongoose.Schema,  // User Schema
   userSchema = new schema({
     // id : {type: Number, index:1, required:true, unique:true ,default:601, min : 600},
     name: String,
     title: String, // Artist Only : Stage Name
-    email: {type: String,index:1, required:true, unique:true},
+    email: {type: String, index: 1, required: true, unique: true},
     password: String,
     typeEnum: String, // ENUM { User , Artist }
     albumId: [Number], // Artist Albums, User PlayList
@@ -16,9 +16,24 @@ var mongoose = require('mongoose'),
   }, {collection: 'user'}),
   UserSchema = mongoose.model('UserSchema', userSchema);
 
-module.exports = UserSchema;
-
+// Validating email
 userSchema.path('email').set(
   (val)=>{
     return String(val).toLowerCase();
   });
+
+userSchema.path('email').validate(
+  (val)=>{
+    let valRaw = val;
+    // this runs second
+    console.log(`schema :: valRaw : ${valRaw}`);
+    return valRaw.length > 0;
+  }, `schema :: title is to short`);
+
+userSchema.pre('save',
+  (next) => {
+    // this runs last
+    return next();
+  });
+
+module.exports = UserSchema;

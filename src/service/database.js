@@ -1,23 +1,21 @@
-
 //------------Connect to mongodbon mLab via Mongoose---------------//
-var consts = require('./consts/constring'),
-    mongoose = require('mongoose'),
-    autoIncrement = require('mongoose-auto-increment'),
-    connection = mongoose.createConnection(consts.MLAB_KEY),
-    //The server option auto_reconnect is defaulted to true
-     options = {
-      server: {
-        auto_reconnect:true,
-        socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 }
-      },
-      replset: {
-        socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 }
-      }
-    };
+const consts = require('./consts/constring'),
+  mongoose = require('mongoose'),
+  autoIncrement = require('mongoose-auto-increment'),
+  connection = mongoose.createConnection(consts.MLAB_KEY),    //The server option auto_reconnect is defaulted to true
+  options = {
+    server: {
+      auto_reconnect: true,
+      socketOptions: {keepAlive: 1, connectTimeoutMS: 30000}
+    },
+    replset: {
+      socketOptions: {keepAlive: 1, connectTimeoutMS: 30000}
+    }
+  };
 
-// mongoose.Promise = global.Promise;
 mongoose.connect(consts.MLAB_KEY, options);
-conn = mongoose.connection;//get default connection
+mongoose.Promise = global.Promise;
+conn = mongoose.connection;     //get default connection
 
 // Init autoincrement
 autoIncrement.initialize(connection);

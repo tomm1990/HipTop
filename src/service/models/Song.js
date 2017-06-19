@@ -1,10 +1,10 @@
-var mongoose = require('mongoose'),
+const mongoose = require('mongoose'),
   schema = mongoose.Schema,
   autoIncrement = require('../database'),
 
   // Song Schema
   songSchema = new schema({
-    id : {type: Number, index:1, required:true, unique:true ,default:401,min:400},
+    id: {type: Number, index: 1, required: true, unique: true, default: 401, min: 400},
     author: [String],
     title: String,
     urlSrc: String,
@@ -20,7 +20,7 @@ songSchema.plugin(autoIncrement.autoIncrement.plugin, {
   incrementBy: 1
 });
 
-var SongSchema = mongoose.model('SongSchema', songSchema);
+let SongSchema = mongoose.model('SongSchema', songSchema);
 
 // Validating title
 songSchema.path('title').set(
@@ -33,9 +33,9 @@ songSchema.path('title').validate(
   (val)=>{
     let valRaw = val;
     // this runs second
-    console.log(`valRaw.length : ${valRaw.length}`);
+    console.log(`schema :: valRaw.length : ${valRaw.length}`);
     return valRaw.length > 0;
-  }, `title is to short`);
+  }, `schema :: title is to short`);
 
 songSchema.pre('save',
   (next) => {

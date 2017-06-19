@@ -6,7 +6,6 @@ const express = require('express'),
       path = require("path"),
       mainRoute = __dirname+'/html';
 
-
 /*
  * app usages
  */
@@ -28,8 +27,6 @@ app.get('/', (req,res,next) => {
   res.sendFile(path.join((__dirname,'index.html')));
   req.next();
 });
-
-
 
 /*** All routes ***/
 
