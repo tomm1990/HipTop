@@ -23,3 +23,10 @@ module.exports = AlbumSchema;
 //   )
 // });
 
+
+albumSchema.path('id').validate(
+  (val)=>{
+    console.log(`validating id : ${val}`);
+    let iVal = Number(val);
+    return iVal>700 && iVal<800;
+  },"Unable to create new album with this id");

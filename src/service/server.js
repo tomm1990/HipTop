@@ -33,7 +33,6 @@ app.get('/', (req,res,next) => {
 
 /*** All routes ***/
 
-
 /*
    getAllAlbums
       This endpoint retrieves all albums.
@@ -73,46 +72,156 @@ app.post('/removeAllAlbums',hiptopController.removeAllAlbums);
   saveNewAlbum
 
   @type
-    POST
+      POST
 
   @param
-     id : Number {700 < id < 800}
-     author: Array,
-     title: String,
-     urlSrc: String,
-     likes: [Number],
-     genre: String,
-     imgUrl: String,
-     comment: [Number],
-     songId: [Number]
+       id : Number {700 < id < 800}
+       author: Array,
+       title: String,
+       urlSrc: String,
+       likes: [Number],
+       genre: String,
+       imgUrl: String,
+       comment: [Number],
+       songId: [Number]
 
   @return
-    code 500 : json Unable to create document
-    code 404 : json Already Exists
-    code 501 : json Unable to save document
-    code 200 : json Album
+      code 500 : json Unable to create document
+      code 404 : json Already Exists
+      code 501 : json Unable to save document
+      code 200 : json Album
 
   @i.e
-    https://hiptop.herokuapp.com/saveNewAlbum
-    [id][701]
-    [author][Shlomi Shabat]
-    [author][Rita] // send twice to extend the array
-    [title][Yesh Lach]
-    [urlSrc][]
-    [likes][401] // users ID
-    [likes][402]
-    [likes][402]
-    [genre][pop]
-    [imgUrl][http://www.jewishagency.org/he/sites/default/files/styles/blog_slider/public/VOICES_RITA_32014.jpg?itok=RhoUD449]
-    [comment][801] // comments ID
-    [comment][802]
-    [comment][803]
-    [songId][402] // songs ID
-    [songId][403]
-    [songId][404]
+      https://hiptop.herokuapp.com/saveNewAlbum
+      [id][701]
+      [author][Shlomi Shabat]
+      [author][Rita] // send twice to extend the array
+      [title][Yesh Lach]
+      [urlSrc][]
+      [likes][401] // users ID
+      [likes][402]
+      [likes][402]
+      [genre][pop]
+      [imgUrl][http://www.jewishagency.org/he/sites/default/files/styles/blog_slider/public/VOICES_RITA_32014.jpg?itok=RhoUD449]
+      [comment][801] // comments ID
+      [comment][802]
+      [comment][803]
+      [songId][402] // songs ID
+      [songId][403]
+      [songId][404]
  */
 app.post('/saveNewAlbum',hiptopController.saveNewAlbum);
 
+/*
+ getAllSongs
+    This endpoint retrieves all songs.
+
+ @type
+    POST
+
+ @param
+    -
+
+ @return
+     code 503 : json Unable to Find documents
+     code 200 : json All Songs
+ */
+app.post('/getAllSongs',hiptopController.getAllSongs);
+
+
+/*
+ getSongsByAlbumName
+
+ @type
+      POST
+
+ @param
+      name
+
+ @return
+     code 502 : json Unable to Search Albums documents
+     code 503 : json Unable to Find Albums documents
+     code 504 : json Unable to Search Songs documents
+     code 505 : json Unable to Find Songs documents
+     code 200 : json Songs
+
+ @i.e
+     https://hiptop.herokuapp.com/getSongsByAlbumName
+     [name][Lady Gaga]
+
+ */
+app.post('/getSongsByAlbumName',hiptopController.getSongsByAlbumName);
+
+/*
+ saveNewSong
+
+ @type
+    POST
+
+ @param
+     author: [String],
+     title: String,
+     urlSrc: String,
+     length: Date
+
+ @return
+     code 502 : json Unable to Search documents
+     code 501 : json Unable to save document
+     code 404 : json Already Exists
+     code 200 : json Song
+
+ @i.e
+     https://hiptop.herokuapp.com/saveNewSong
+     [author][Lady Gaga]
+     [author][Maroon 5]
+     [urlSrc][http://www] // Song Url
+     [imgSrc][http://www]
+     [length][03:20]
+ */
+app.post('/saveNewSong',hiptopController.saveNewSong);
+
+/*
+ removeAllSongs
+      This endpoint removes all songs.
+
+ @type
+      POST
+
+ @param
+      -
+
+ @return
+     code 502 : json Unable to Search documents
+     code 503 : json Unable to Find documents
+     code 200 : json Action Saved
+ */
+app.post('/removeAllSongs',hiptopController.removeAllSongs);
+
+
+/*
+ signUpUser
+
+ @type
+      POST
+
+ @param
+     name: String,
+     email: String,
+     password: String
+
+ @return
+     code 502 : json Unable to Search documents
+     code 404 : json Already Exists
+     code 501 : json Unable to save document
+     code 200 : json User
+
+ @i.e
+     https://hiptop.herokuapp.com/signUpUser
+     [name][Tom Goldberg]
+     [email][tom@goldberg.com]
+     [password][1234]
+ */
+app.post('/signUpUser',hiptopController.signUpUser);
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
