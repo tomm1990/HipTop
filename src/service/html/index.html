@@ -2,7 +2,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>HipTop</title>
+    <title>HipTop API</title>
+    <link rel="shortcut icon" type="image/png" href="logo.png"/>
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="style.css">
 
@@ -16,14 +17,17 @@
         <div class="menu">
             <ul>
                 <a href="#getAllAlbums"><li>Get All Albums</li></a>
-
                 <a href="#removeAllAlbums"><li>Remove All Albums</li></a>
                 <a href="#saveNewAlbum"><li>Save New Album</li></a>
-            <!--    <a href="#getReporterByVodID"><li>Get Reporter's By Vod's ID</li></a>
-                <a href="#getVodRatedHigherThan"><li>Get Vod's higher than rate</li></a>
-                <a href="#Error"><li>Errors</li></a>
-                <a href="#NoSql"><li>NoSql Injection</li></a>
--->
+                <a href="#getAllSongs"><li>Get All Songs</li></a>
+                <a href="#getSongsByAlbumName"><li>Get Songs By Album's Name</li></a>
+                <a href="#saveNewSong"><li>Save New Song</li></a>
+                <a href="#removeAllSongs"><li>Remove All Songs</li></a>
+                <a href="#signUpUser"><li>Sign Up User</li></a>
+                <a href="#removeAllUsers"><li>Remove All Users</li></a>
+                <a href="#Login"><li>Login</li></a>
+                <a href="#Error"><li>Error Handler</li></a>
+
             </ul>
         </div>
     </nav>
@@ -35,7 +39,7 @@
                         Introduction
                     </h1>
                     <p>
-                        Welcome to the TipTop Web Service API! You can use our API to access endpoints, which can get information on various Albums, Songs, Users and Comments in our database.<br><br>
+                        Welcome to the HipTop Web Service API! You can use our API to access endpoints, which can get information on various Albums, Songs, Users and Comments in our database.<br><br>
 
                         You can view code examples in the dark area to the right, and you can switch the query accordings to the manuals.<br><br>
 
@@ -219,8 +223,689 @@
         </exs>
     
     </main>
-
- 
+    <main>
+        <desc>
+            <section>
+                    <h1>
+                        <a name="getAllSongs">Get All Songs</a>
+                    </h1>
+                <prop>
+                    <h2>
+                        Description:
+                    </h2>
+                    <h3>
+                        This endpoint gets all the songs
+                    </h3>
+                </prop>
+                <prop>
+                    <h2>
+                        HTTP Request:
+                    </h2>
+                    <code class="prettyprint">
+                        POST https://hiptop.herokuapp.com/getAllSongs
+                    </code>        
+                </prop>
+<!--
+                <prop>
+                    <h2>
+                        Query Parameters
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                            <th>Parameter</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>id</td>
+                                <td>700</td>
+                                <td>Album id :Number(700 &lt id  &lt 800)</td>
+                            </tr>
+                            <tr>
+                                <td>author</td>
+                                <td></td>
+                                <td>Album author :[String]</td>
+                            </tr>
+                            <tr>
+                                <td>title</td>
+                                <td></td>
+                                <td>Album title :String</td>
+                            </tr>
+                            <tr>
+                                <td>urlSrc</td>
+                                <td></td>
+                                <td>Album source :String</td>
+                            </tr>
+                            <tr>
+                                <td>likes</td>
+                                <td></td>
+                                <td>Album Likes :[Number](User's id)</td>
+                            </tr>
+                            <tr>
+                                <td>genre</td>
+                                <td></td>
+                                <td>Album genre :String</td>
+                            </tr>
+                            <tr>
+                                <td>imgUrl</td>
+                                <td></td>
+                                <td>Album image source :String</td>
+                            </tr>
+                            <tr>
+                                <td>comment</td>
+                                <td></td>
+                                <td>Album comments :[Number](Comment's id)</td>
+                            </tr>
+                            <tr>
+                                <td>songId</td>
+                                <td></td>
+                                <td>Album songs :[Number](song's id)</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                
+                </prop>
+-->
+            </section>
+            
+        </desc>
+        <exs>
+<!--
+            <blockquote>
+                <p>https://hiptop.herokuapp.com/saveNewAlbum</p>
+                <p><br>{ id : 701, author : Pink, title : Hell, urlSrc: http://www, <br>
+                    likes: 401, likes: 402, likes: 403, genre: pop, imgUrl: http://www,<br>
+                    comment: 801, comment: 802, comment: 803, songId: 402, songId: 403 }</p>
+            </blockquote><br>
+-->
+            <blockquote>
+                <p>The HTTP request returns JSON structured like this:</p>
+            </blockquote>
+            <pre class="hjson3" >
+                
+            </pre>
+        </exs>
+    
+    </main>
+    <main>
+        <desc>
+            <section>
+                    <h1>
+                        <a name="getSongsByAlbumName">Get Songs By Album's Name</a>
+                    </h1>
+                <prop>
+                    <h2>
+                        Description:
+                    </h2>
+                    <h3>
+                        This endpoint get all songs which blongs to spesific album specified by input
+                    </h3>
+                </prop>
+                <prop>
+                    <h2>
+                        HTTP Request:
+                    </h2>
+                    <code class="prettyprint">
+                        POST https://hiptop.herokuapp.com/getSongsByAlbumName
+                    </code>        
+                </prop>
+                <prop>
+                    <h2>
+                        Query Parameters
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                            <th>Parameter</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>name</td>
+                                <td></td>
+                                <td>Album's name</td>
+                            </tr>
+                            
+                            
+                        </tbody>
+                    </table>
+                
+                </prop>
+            </section>
+            
+        </desc>
+        <exs>
+            <blockquote>
+                <p>https://hiptop.herokuapp.com/getSongsByAlbumName</p>
+                <p><br>{ name : Lady Gaga }</p>
+            </blockquote><br>
+            <blockquote>
+                <p>The HTTP request returns JSON structured like this:</p>
+            </blockquote>
+            <pre class="hjson3" >
+                
+            </pre>
+        </exs>
+    </main>
+    <main>
+        <desc>
+            <section>
+                    <h1>
+                        <a name="saveNewSong">Save New Song</a>
+                    </h1>
+                <prop>
+                    <h2>
+                        Description:
+                    </h2>
+                    <h3>
+                        This endpoint saves new song
+                    </h3>
+                </prop>
+                <prop>
+                    <h2>
+                        HTTP Request:
+                    </h2>
+                    <code class="prettyprint">
+                        POST https://hiptop.herokuapp.com/saveNewSong
+                    </code>        
+                </prop>
+                <prop>
+                    <h2>
+                        Query Parameters
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                            <th>Parameter</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>author</td>
+                                <td></td>
+                                <td>Author's name</td>
+                            </tr>
+                            <tr>
+                                <td>title</td>
+                                <td></td>
+                                <td>Song's name</td>
+                            </tr>
+                            <tr>
+                                <td>urlSrc</td>
+                                <td></td>
+                                <td>Song's url</td>
+                            </tr>
+                            <tr>
+                                <td>length</td>
+                                <td></td>
+                                <td>Song's Length</td>
+                            </tr>
+                            
+                            
+                        </tbody>
+                    </table>
+                
+                </prop>
+            </section>
+            
+        </desc>
+        <exs>
+            <blockquote>
+                <p>https://hiptop.herokuapp.com/saveNewSong</p>
+                <p><br>{ <br>
+                    author : Lady Gaga,<br>
+                    author : Maroon 5,<br>
+                    urlSrc : http://www,<br>
+                    imgSrc : http://www,<br>
+                    length : 03:20<br>
+                    }</p>
+            </blockquote><br>
+            <blockquote>
+                <p>The HTTP request returns JSON structured like this:</p>
+            </blockquote>
+            <pre class="hjson3" >
+                
+            </pre>
+        </exs>
+    </main>
+    <main>
+        <desc>
+            <section>
+                    <h1>
+                        <a name="removeAllSongs">Remove All Songs</a>
+                    </h1>
+                <prop>
+                    <h2>
+                        Description:
+                    </h2>
+                    <h3>
+                        This endpoint removes all songs
+                    </h3>
+                </prop>
+                <prop>
+                    <h2>
+                        HTTP Request:
+                    </h2>
+                    <code class="prettyprint">
+                        POST https://hiptop.herokuapp.com/removeAllSongs
+                    </code>        
+                </prop>
+<!--
+                <prop>
+                    <h2>
+                        Query Parameters
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                            <th>Parameter</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>id</td>
+                                <td>700</td>
+                                <td>Album id :Number(700 &lt id  &lt 800)</td>
+                            </tr>
+                            <tr>
+                                <td>author</td>
+                                <td></td>
+                                <td>Album author :[String]</td>
+                            </tr>
+                            <tr>
+                                <td>title</td>
+                                <td></td>
+                                <td>Album title :String</td>
+                            </tr>
+                            <tr>
+                                <td>urlSrc</td>
+                                <td></td>
+                                <td>Album source :String</td>
+                            </tr>
+                            <tr>
+                                <td>likes</td>
+                                <td></td>
+                                <td>Album Likes :[Number](User's id)</td>
+                            </tr>
+                            <tr>
+                                <td>genre</td>
+                                <td></td>
+                                <td>Album genre :String</td>
+                            </tr>
+                            <tr>
+                                <td>imgUrl</td>
+                                <td></td>
+                                <td>Album image source :String</td>
+                            </tr>
+                            <tr>
+                                <td>comment</td>
+                                <td></td>
+                                <td>Album comments :[Number](Comment's id)</td>
+                            </tr>
+                            <tr>
+                                <td>songId</td>
+                                <td></td>
+                                <td>Album songs :[Number](song's id)</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                
+                </prop>
+-->
+            </section>
+            
+        </desc>
+        <exs>
+<!--
+            <blockquote>
+                <p>https://hiptop.herokuapp.com/saveNewAlbum</p>
+                <p><br>{ id : 701, author : Pink, title : Hell, urlSrc: http://www, <br>
+                    likes: 401, likes: 402, likes: 403, genre: pop, imgUrl: http://www,<br>
+                    comment: 801, comment: 802, comment: 803, songId: 402, songId: 403 }</p>
+            </blockquote><br>
+-->
+            <blockquote>
+                <p>The HTTP request returns JSON structured like this:</p>
+            </blockquote>
+            <pre class="hjson3" >
+                
+            </pre>
+        </exs>
+    
+    </main>
+    <main>
+        <desc>
+            <section>
+                    <h1>
+                        <a name="signUpUser">Save New User // Sign Up User</a>
+                    </h1>
+                <prop>
+                    <h2>
+                        Description:
+                    </h2>
+                    <h3>
+                        This endpoint sings up new user
+                    </h3>
+                </prop>
+                <prop>
+                    <h2>
+                        HTTP Request:
+                    </h2>
+                    <code class="prettyprint">
+                        POST https://hiptop.herokuapp.com/signUpUser
+                    </code>        
+                </prop>
+                <prop>
+                    <h2>
+                        Query Parameters
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                            <th>Parameter</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>name</td>
+                                <td></td>
+                                <td>User's name</td>
+                            </tr>
+                            <tr>
+                                <td>email</td>
+                                <td></td>
+                                <td>User's email</td>
+                            </tr>
+                            <tr>
+                                <td>password</td>
+                                <td></td>
+                                <td>User's password</td>
+                            </tr>
+  
+                            
+                            
+                        </tbody>
+                    </table>
+                
+                </prop>
+            </section>
+            
+        </desc>
+        <exs>
+            <blockquote>
+                <p>https://hiptop.herokuapp.com/signUpUser</p>
+                <p><br>{ <br>
+                    name : Tom Goldberg,<br>
+                    email : tom@goldberg.com,<br>
+                    password : 1234<br>
+                   
+                    }</p>
+            </blockquote><br>
+            <blockquote>
+                <p>The HTTP request returns JSON structured like this:</p>
+            </blockquote>
+            <pre class="hjson3" >
+                
+            </pre>
+        </exs>
+    </main>
+    <main>
+        <desc>
+            <section>
+                    <h1>
+                        <a name="removeAllUsers">Remove All Users</a>
+                    </h1>
+                <prop>
+                    <h2>
+                        Description:
+                    </h2>
+                    <h3>
+                        This endpoint removes all users
+                    </h3>
+                </prop>
+                <prop>
+                    <h2>
+                        HTTP Request:
+                    </h2>
+                    <code class="prettyprint">
+                        POST https://hiptop.herokuapp.com/removeAllUsers
+                    </code>        
+                </prop>
+<!--
+                <prop>
+                    <h2>
+                        Query Parameters
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                            <th>Parameter</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>id</td>
+                                <td>700</td>
+                                <td>Album id :Number(700 &lt id  &lt 800)</td>
+                            </tr>
+                            <tr>
+                                <td>author</td>
+                                <td></td>
+                                <td>Album author :[String]</td>
+                            </tr>
+                            <tr>
+                                <td>title</td>
+                                <td></td>
+                                <td>Album title :String</td>
+                            </tr>
+                            <tr>
+                                <td>urlSrc</td>
+                                <td></td>
+                                <td>Album source :String</td>
+                            </tr>
+                            <tr>
+                                <td>likes</td>
+                                <td></td>
+                                <td>Album Likes :[Number](User's id)</td>
+                            </tr>
+                            <tr>
+                                <td>genre</td>
+                                <td></td>
+                                <td>Album genre :String</td>
+                            </tr>
+                            <tr>
+                                <td>imgUrl</td>
+                                <td></td>
+                                <td>Album image source :String</td>
+                            </tr>
+                            <tr>
+                                <td>comment</td>
+                                <td></td>
+                                <td>Album comments :[Number](Comment's id)</td>
+                            </tr>
+                            <tr>
+                                <td>songId</td>
+                                <td></td>
+                                <td>Album songs :[Number](song's id)</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                
+                </prop>
+-->
+            </section>
+            
+        </desc>
+        <exs>
+<!--
+            <blockquote>
+                <p>https://hiptop.herokuapp.com/saveNewAlbum</p>
+                <p><br>{ id : 701, author : Pink, title : Hell, urlSrc: http://www, <br>
+                    likes: 401, likes: 402, likes: 403, genre: pop, imgUrl: http://www,<br>
+                    comment: 801, comment: 802, comment: 803, songId: 402, songId: 403 }</p>
+            </blockquote><br>
+-->
+            <blockquote>
+                <p>The HTTP request returns JSON structured like this:</p>
+            </blockquote>
+            <pre class="hjson3" >
+                
+            </pre>
+        </exs>
+    
+    </main>
+    <main>
+        <desc>
+            <section>
+                    <h1>
+                        <a name="getAmountAlbumByGenre">Get amount of albums by genre</a>
+                    </h1>
+                <prop>
+                    <h2>
+                        Description:
+                    </h2>
+                    <h3>
+                        This endpoint gets specified amount of album by specified genre
+                    </h3>
+                </prop>
+                <prop>
+                    <h2>
+                        HTTP Request:
+                    </h2>
+                    <code class="prettyprint">
+                        POST https://hiptop.herokuapp.com/getAmountAlbumByGenre
+                    </code>        
+                </prop>
+                <prop>
+                    <h2>
+                        Query Parameters
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                            <th>Parameter</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>genre</td>
+                                <td></td>
+                                <td>Album's genre</td>
+                            </tr>
+                            <tr>
+                                <td>amount</td>
+                                <td></td>
+                                <td>Amoung of album to be received</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                
+                </prop>
+            </section>
+            
+        </desc>
+        <exs>
+            <blockquote>
+                <p>https://hiptop.herokuapp.com/getAmountAlbumByGenre</p>
+                <p><br>{ <br>
+                    genre : pop,<br>
+                    amount : 3<br>                   
+                    }</p>
+            </blockquote><br>
+            <blockquote>
+                <p>The HTTP request returns JSON structured like this:</p>
+            </blockquote>
+            <pre class="hjson3" >
+                
+            </pre>
+        </exs>
+    </main>
+    <main>
+        <desc>
+            <section>
+                    <h1>
+                        <a name="Login">Login</a>
+                    </h1>
+                <prop>
+                    <h2>
+                        Description:
+                    </h2>
+                    <h3>
+                        Login function
+                    </h3>
+                </prop>
+                <prop>
+                    <h2>
+                        HTTP Request:
+                    </h2>
+                    <code class="prettyprint">
+                        POST https://hiptop.herokuapp.com/Login
+                    </code>        
+                </prop>
+                <prop>
+                    <h2>
+                        Query Parameters
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                            <th>Parameter</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>email</td>
+                                <td></td>
+                                <td>User's email</td>
+                            </tr>
+                            <tr>
+                                <td>password</td>
+                                <td></td>
+                                <td>User's password</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                
+                </prop>
+            </section>
+            
+        </desc>
+        <exs>
+            <blockquote>
+                <p>https://hiptop.herokuapp.com/Login</p>
+                <p><br>{ <br>
+                    email : tom@goldberg.com,<br>
+                    password : 1234<br>                   
+                    }</p>
+            </blockquote><br>
+            <blockquote>
+                <p>The HTTP request returns JSON structured like this:</p>
+            </blockquote>
+            <pre class="hjson3" >
+                
+            </pre>
+        </exs>
+    </main>
     <main>
         <desc>
             <section>
@@ -237,18 +922,107 @@
                 </prop>
                 <prop>
                     <h2>
-                        Respod:
+                        Options
                     </h2>
-                    <code class="prettyprint">
-                        {  "err": "wrong input" }
-                    </code>        
+                    <table>
+                        <thead>
+                            <tr>
+                            <th>Status Code</th>
+                            <th>Json</th>
+                            <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td>   
+                                    <code class="prettyprint">
+                                        {"title":"missing params"}
+                                    </code>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>404</td>
+                                <td>   
+                                    <code class="prettyprint">
+                                        {"title":"already exists"}
+                                    </code>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>500</td>
+                                <td>   
+                                    <code class="prettyprint">
+                                        {"title":"error create"}
+                                    </code>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>501</td>
+                                <td>   
+                                    <code class="prettyprint">
+                                        {"title":"error save"}
+                                    </code>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>200</td>
+                                <td>   
+                                    <code class="prettyprint">
+                                        {"title" : "saved"}
+                                    </code>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>504</td>
+                                <td>   
+                                    <code class="prettyprint">
+                                        {"title" : "cant search"}
+                                    </code>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>503</td>
+                                <td>   
+                                    <code class="prettyprint">
+                                        {"title" : "cant find"}
+                                    </code>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>403</td>
+                                <td>   
+                                    <code class="prettyprint">
+                                        {"title" : "not exists"}
+                                    </code>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>402</td>
+                                <td>   
+                                    <code class="prettyprint">
+                                        {"title": "wrong password"}
+                                    </code>
+                                </td>
+                                <td></td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                
                 </prop>
             </section>
         </desc>
     </main>
-    
-        
-    
+       
     <div class="clear">
     </div>
 </div>

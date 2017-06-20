@@ -4,7 +4,7 @@
 }
 
 body {
-    font-size: 1.2vw;
+    font-size: 1.4vw;
     background: #393939;
     font-family: sans-serif,arial,tahoma;
     color : #fff;
@@ -24,13 +24,13 @@ nav, main ,desc , exs , blockquot {
 }
 
 nav{
-    height : 400vh;
+    height : 1200vh;
     width : 15%;
 }
 
 nav > #logo{
     height : 15vh;
-    background: url('loco.png') no-repeat;
+    background: url('logo.png') no-repeat;
     background-position: center; 
     background-size: 60%;
 }
@@ -91,13 +91,18 @@ prop > h3{
     padding-left: 7%;
 }
 
-prop > code{
-    font-size: 110%;
+prop > code,td > code{
+    font-size: 100%;
     background-color: rgba(0,0,0,0.05);
     color : #393939;
     padding: 3px;
     border-radius: 3px;
     margin-left: 7%;
+}
+
+td > code{
+    font-size: 100%;
+    margin-left: 2%;
 }
 
 prop > table{
@@ -123,8 +128,8 @@ table > thead{
 
 thead th, tbody td{
     padding: 1%;
-    padding-left: 4%;
-    padding-right: 4%;
+    padding-left: 1%;
+    padding-right: 3%;
 }
 
 table > tbody{
@@ -147,42 +152,42 @@ blockquote{
 }
 
 pre.hjson1{
-    background: url('getAllReporters.png') no-repeat;
+    //background: url('getAllReporters.png') no-repeat;
     height : 70%;
     background-size: 90%;
     background-position: center; 
 }
 
 pre.hjson2{
-    background: url('getAllVOD.png') no-repeat;
+    //background: url('getAllVOD.png') no-repeat;
     height : 70%;
     background-size: 90%;
     background-position: center; 
 }
 
 pre.hjson3{
-    background: url('getVodByReporterID.png') no-repeat;
+    //background: url('getVodByReporterID.png') no-repeat;
     height : 70%;
     background-size: 90%;
     background-position: center; 
 }
 
 pre.hjson4{
-    background: url('getReporterByVodID.png') no-repeat;
+    //background: url('getReporterByVodID.png') no-repeat;
     height : 70%;
     background-size: 90%;
     background-position: center; 
 }
 
 pre.hjson5{
-    background: url('getVodRatedHigherThan.png') no-repeat;
+    //background: url('getVodRatedHigherThan.png') no-repeat;
     height : 70%;
     background-size: 90%;
     background-position: center; 
 }
 
 pre.hjson6{
-    background: url('getAllVodXRate.png') no-repeat;
+    //background: url('getAllVodXRate.png') no-repeat;
     height : 70%;
     background-size: 90%;
     background-position: center; 
@@ -190,4 +195,10 @@ pre.hjson6{
 
 .clear{
     clear : both;
+}
+
+@media screen and (max-width:900px){
+    nav{
+        display: none;
+    }
 }

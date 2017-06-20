@@ -56,8 +56,8 @@ exports.getAllAlbums = (req,res)=>{
     Album.find({},
       (err,albums)=>{
           if(err){
-              console.log(consts.jsonArr[5]);
-              res.status(503).json(consts.jsonArr[5]);
+              console.log(consts.jsonArr[5]); // Cant search
+              res.status(504).json(consts.jsonArr[5]);
           } else {
               console.log(albums);
               res.status(200).json(albums);
@@ -141,7 +141,7 @@ exports.getSongsByAlbumName = (req,res)=>{
     },(err,albums)=>{
       if(err){
         console.log(err); // Cant Search
-        return res.status(502).json(consts.jsonArr[5]);
+        return res.status(504).json(consts.jsonArr[5]);
       }
       if(!albums){
         console.log(consts.jsonArr[6]); // Cant Find
@@ -156,7 +156,7 @@ exports.getSongsByAlbumName = (req,res)=>{
         }
         if(!songs){
           console.log(consts.jsonArr[6]); // Cant Find
-          return res.status(505).json(consts.jsonArr[5]);
+          return res.status(503).json(consts.jsonArr[6]);
         }
         else {
           console.log(songs); // OK
@@ -191,7 +191,7 @@ exports.saveNewSong = (req,res)=>{
   },(err,result)=>{
     if(err){
       console.log(consts.jsonArr[5]); // Cant Search
-      return res.status(502).json(consts.jsonArr[5]);
+      return res.status(504).json(consts.jsonArr[5]);
     }
     if(result){
       console.log(consts.jsonArr[1]); // Already Exists
@@ -219,7 +219,7 @@ exports.removeAllAlbums = (req,res)=>{
     (err,albums) => {
       if(err){
         console.log(consts.jsonArr[5]); // Cant Search
-        return res.status(502).json(consts.jsonArr[5]);
+        return res.status(504).json(consts.jsonArr[5]);
       }
       if(!albums){
         console.log(consts.jsonArr[6]); // Cant Find
@@ -239,7 +239,7 @@ exports.removeAllSongs = (req,res)=>{
     (err,song) => {
       if(err){
         console.log(consts.jsonArr[5]); // Cant Search
-        return res.status(502).json(consts.jsonArr[5]);
+        return res.status(504).json(consts.jsonArr[5]);
       }
       if(!song){
         console.log(consts.jsonArr[6]); // Cant Find
@@ -259,7 +259,7 @@ exports.removeAllUsers = (req,res)=>{
     (err,user) => {
       if(err){
         console.log(consts.jsonArr[5]); // Cant Search
-        return res.status(502).json(consts.jsonArr[5]);
+        return res.status(504).json(consts.jsonArr[5]);
       }
       if(!user){
         console.log(consts.jsonArr[6]); // Cant Find
@@ -281,7 +281,7 @@ exports.getAmountAlbumByGenre = (req,res)=>{
   },(err,albums)=>{
     if(err){
       console.log(`Cant search :: err -> ${err}`);
-      return res.status(502).json(consts.jsonArr[5]);
+      return res.status(504).json(consts.jsonArr[5]);
     } else {
       console.log(`All Albums :\n -> ${albums}`);
       return res.status(200).json(albums);
@@ -317,7 +317,7 @@ exports.signUpUser = (req,res)=>{
   },(err,result)=>{
     if(err){
       console.log(consts.jsonArr[5]); // Cant Search
-      return res.status(502).json(consts.jsonArr[5]);
+      return res.status(504).json(consts.jsonArr[5]);
     }
     if(result){
       console.log(consts.jsonArr[1]); // Already Exists
@@ -348,7 +348,7 @@ exports.login = (req,res)=>{
   }, (err,userJson) => {
     if(err){ // Cant Search
       console.log(`Cant search :: err -> ${err}`);
-      return res.status(502).json(consts.jsonArr[5]);
+      return res.status(504).json(consts.jsonArr[5]);
     }
     if(!userJson){
       console.log(`Cant find :: userJson -> ${userJson}`);
@@ -357,7 +357,7 @@ exports.login = (req,res)=>{
     else {
       if(userJson.password!=req.body.password){
         console.log(`Password is wrong :: error -> ${req.body.password}`);
-        return res.status(404).json(consts.jsonArr[8]);
+        return res.status(402).json(consts.jsonArr[8]);
       } else {
         console.log(userJson); // OK
         res.status(200).json(userJson);

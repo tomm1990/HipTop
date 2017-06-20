@@ -3,19 +3,18 @@ const express = require('express'),
       bodyParser = require('body-parser'),
       hiptopController = require('./controllers/hiptopController'),
       port = process.env.PORT || 3000,
-      path = require("path"),
-      mainRoute = __dirname+'/html';
+      path = require("path");
 
 /*
  * app usages
  */
-app.use('/',express.static('./public')); //for API
-app.use(express.static(mainRoute));
+app.use('/',express.static(`${__dirname}/html`)); //for API
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
 app.use( (req,res,next) => {
     res.header("Access-Control-Allow-Origin","*");
-    res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept");
     res.set("Content-Type", "application/json");
     next();
 });
@@ -23,8 +22,12 @@ app.use( (req,res,next) => {
 /*
  * default rout
  */
+app.all('*', (req,res,next)=>{  // Global handler
+  req.next();
+});
+
 app.get('/', (req,res,next) => {
-  res.sendFile(path.join((__dirname,'index.html')));
+  res.send(`${__dirname}/index.html`);
   req.next();
 });
 
@@ -44,7 +47,7 @@ app.get('/', (req,res,next) => {
      code 503 : json Unable to Find documents
      code 200 : json All Albums
  */
-app.post('/getAllAlbums', hiptopController.getAllAlbums);
+app.post('/getAllAlbums', hiptopController.getAllAlbums); // V
 
 /*
    removeAllAlbums
@@ -156,7 +159,7 @@ app.post('/getSongsByAlbumName',hiptopController.getSongsByAlbumName);
      author: [String],
      title: String,
      urlSrc: String,
-     length: Date
+     length: String
 
  @return
      code 502 : json Unable to Search documents
@@ -280,7 +283,6 @@ app.post('/getAmountAlbumByGenre',hiptopController.getAmountAlbumByGenre);
      https://hiptop.herokuapp.com/removeAllUsers
  */
 app.post('/Login',hiptopController.login);
-
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
