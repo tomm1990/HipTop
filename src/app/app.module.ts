@@ -16,7 +16,9 @@ import { PopularPlaylistsComponent } from './popular-playlists/popular-playlists
 import { PlaylistsContainerComponent } from './playlists-container/playlists-container.component';
 import { MusicSetComponent } from './music-set/music-set.component';
 import { PopularItemComponent } from './popular-playlists/popular-item/popular-item.component';
-
+import { AlbumService } from './app.AlbumService';
+import { AlbumItemComponent } from './playlists-container/album-item/album-item.component';
+import { SignInService } from './app.signInService';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,14 +33,15 @@ import { PopularItemComponent } from './popular-playlists/popular-item/popular-i
     PopularPlaylistsComponent,
     PlaylistsContainerComponent,
     MusicSetComponent,
-    PopularItemComponent
+    PopularItemComponent,
+    AlbumItemComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [AlbumService,SignInService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

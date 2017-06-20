@@ -9,6 +9,7 @@ export class Album {
   public comment:string[];
   public songId:string[];
 
+
   // constructor(name: string, desciption: string, image: string) {
   //   this.name    = name;
   //   this.desc    = desciption;
@@ -16,6 +17,7 @@ export class Album {
   // }
 
   constructor(id: string, author: string[], title: string, urlSrc: string, likes: string[], genre: string, imgUrl: string, comment: string[], songId: string[]) {
+    console.log("constractor " + author);
     this.id = id;
     this.author = author;
     this.title = title;

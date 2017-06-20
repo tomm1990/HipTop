@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Album} from "../model/album.model";
+import {AlbumService} from "../app.AlbumService";
 
 @Component({
   selector: 'app-playlists-container',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaylistsContainerComponent implements OnInit {
 
-  constructor() { }
+  albums: Album[] = []
+  constructor(private AlService:AlbumService) { }
 
   ngOnInit() {
+    this.AlService.getAlbum().then((album: Album[])=>{
+      this.albums = album;
+    });
   }
 
 }

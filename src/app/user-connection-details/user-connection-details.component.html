@@ -1,20 +1,20 @@
-<form class="form-horizontal">
+<form (ngSubmit)="onSignIn(f)" #f="ngForm" class="form-horizontal">
   <div class="form-group">
     <label for="" class="col-md-5 control-label">Your email address</label>
     <div class="col-md-7">
-      <input type="email" class="form-control" id="" placeholder="Email">
+      <input type="text" class="form-control" name="emailInput" ngModel placeholder="Email">
     </div>
   </div>
   <div class="form-group">
     <label for="" class="col-md-5 control-label">Create a user name</label>
     <div class="col-md-7">
-      <input type="password" class="form-control" id="" placeholder="User name">
+      <input type="text" class="form-control" name="userNameInput" ngModel placeholder="User name">
     </div>
   </div>
   <div class="form-group">
     <label for="" class="col-md-5 control-label">Create a password</label>
     <div class="col-md-7">
-      <input type="password" class="form-control" id="" placeholder="User name">
+      <input type="text" class="form-control" name="passwordInput" ngModel placeholder="Password">
     </div>
   </div>
   <div class="form-group">
@@ -30,3 +30,16 @@
       <button type="submit" class="btn btn-warning col-md-9">Sign in</button>
   </div>
 </form>
+<div
+*ngIf="user"
+class="col-md-12">
+<div class="thumbnail col-md-12">
+  <img class="image-responsive col-md-4" src="./assets/image/HipTop_user.png" alt="...">
+  <div class="caption">
+    <h3>New User Created</h3>
+    <p>email: {{user.email}}</p>
+    <p>user name: {{user.name}}</p>
+    <p>password: {{user.password}}</p>
+  </div>
+</div>
+</div>

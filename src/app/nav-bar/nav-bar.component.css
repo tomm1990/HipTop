@@ -1,5 +1,6 @@
 li{
   padding-left: 30px;
+  margin-top: 20px;
 }
 li a:hover{
   background: none;
@@ -8,4 +9,7 @@ li a:hover{
 
 span{
   padding-right: 30px;
+}
+a{
+  color:white;
 }

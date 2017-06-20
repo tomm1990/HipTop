@@ -1,6 +1,7 @@
 .thumbnail{
   border:none;
   background: none;
+
 }
 img{
   border: 3px solid #1FCEA8;
@@ -9,6 +10,5 @@ img{
   background: #367F6C;
 }
 *{
-  // color:white;
+//   color:white;
 }
-

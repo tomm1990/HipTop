@@ -1,17 +1,10 @@
-<div class="row">
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="..\..\assets\image\AlbumCover.png" alt="...">
-    </a>
+<div class="col-md-12">
+<div class="thumbnail col-md-6">
+  <img class="image-responsive" src="../assets/image/HipTop_user.png" alt="...">
+  <div class="caption">
+    <p class="text-center"
+    *ngIf="user"
+    user="user">{{user.email}}</p>
   </div>
-  <h4>DJ xyz</h4>
-  <p>album name</p>
-  <span class="label label-default">0:22</span>
-  <img src="..\..\assets\image\graph.png" alt="">
-  <span class="label label-default">0:22</span>
-  <div class="col-md-5 col-md-offset-2">
-   <button type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Like</button>
-   <button type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Share</button>
-   <button type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add to playlist</button>
- </div>
+</div>
 </div>
