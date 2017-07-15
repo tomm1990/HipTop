@@ -8,8 +8,18 @@ app-music-player{
   padding-top: 150px;
 }
 app-genre-rating{
-  border:1px solid blue;
+background:#4E326B;
 }
 app-header{
   background: #4D316A;
+}
+
+app-artist-wall{
+  background: url('../assets/image/dj-1204x642.jpg');
+  background-repeat: repeat-x;
+  background-size: 100%;
+}
+app-footer-player{
+  background:  #4D316A;
+  color:white;
 }

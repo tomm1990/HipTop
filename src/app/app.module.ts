@@ -19,6 +19,8 @@ import { PopularItemComponent } from './popular-playlists/popular-item/popular-i
 import { AlbumService } from './app.AlbumService';
 import { AlbumItemComponent } from './playlists-container/album-item/album-item.component';
 import { SignInService } from './app.signInService';
+import { ArtistWallComponent } from './artist-wall/artist-wall.component';
+import { FooterPlayerComponent } from './footer-player/footer-player.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +36,9 @@ import { SignInService } from './app.signInService';
     PlaylistsContainerComponent,
     MusicSetComponent,
     PopularItemComponent,
-    AlbumItemComponent
+    AlbumItemComponent,
+    ArtistWallComponent,
+    FooterPlayerComponent
   ],
   imports: [
     BrowserModule,

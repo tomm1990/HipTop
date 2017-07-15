@@ -1,0 +1,112 @@
+h3{
+  margin-top: 0px;
+  margin-bottom: 10px;
+  color:#1FCEA8;
+}
+h3:first-of-type{
+  color:white;
+}
+
+.col-md-5>p{
+  color:white;
+}
+.thumbnail img{
+  border:10px solid #FFFF00;
+  margin-bottom:20px;
+}
+.btn{
+  background: #FFFF00;
+  margin-bottom: 20px;
+}
+a{
+  color:white;
+  text-decoration: underline;
+  margin-left: 50px;
+}
+.container{
+  margin-top: 50px;
+}
+.thumbnail{
+  margin-left: 80px;
+  border:none;
+  background: transparent;
+}
+.bar{
+  position: relative;
+  margin:auto;
+  width:50%;
+}
+.round1{
+  margin-top:8px;
+  border:1px solid transparent;
+  border-radius: 50%;
+  height:20px;
+  width:20px;
+  background: #1FCEA8;
+  float:left;
+  margin-right: 10px;
+  vertical-align: middle;
+  line-height: 20px;
+}
+.round2{
+  margin-top:6px;
+  border:1px solid transparent;
+  border-radius: 50%;
+  height:24px;
+  width:24px;
+  background: #1FCEA8;
+  float:left;
+  margin-right: 10px;
+  vertical-align: middle;
+  line-height: 24px;
+}
+
+.round3{
+  margin-top:4px;
+  border:1px solid transparent;
+  border-radius: 50%;
+  height:28px;
+  width:28px;
+  background: #1FCEA8;
+  float:left;
+  margin-right: 10px;
+  vertical-align: middle;
+  line-height: 28px;
+}
+
+.round4{
+  margin-top: 2px;
+  border:1px solid transparent;
+  border-radius: 50%;
+  height:32px;
+  width:32px;
+  background: #1FCEA8;
+  float:left;
+  margin-right: 10px;
+  vertical-align: middle;
+  line-height: 32px;
+}
+
+.round5{
+  border:1px solid transparent;
+  border-radius: 50%;
+  height:36px;
+  width:36px;
+  background: #1FCEA8;
+  float:left;
+  margin-right: 10px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 36px;
+}
+
+
+.round p{
+  position:relative;
+  color:#4D316A;
+  margin:0px;
+
+}
+.currentStep{
+  background: white;
+}
