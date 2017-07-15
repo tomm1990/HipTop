@@ -1,0 +1,12 @@
+app-header{
+  background: #4e326b;
+}
+
+app-footer-player {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background: #4e326b;
+}
+

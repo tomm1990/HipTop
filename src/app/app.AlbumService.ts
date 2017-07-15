@@ -1,6 +1,6 @@
 import {EventEmitter,Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
-import {Album} from "./model/album.model";
+import {Album} from "./app-shared/model/album.model";
 import 'rxjs/add/operator/toPromise';
 
 

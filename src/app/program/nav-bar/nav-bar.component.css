@@ -1,0 +1,18 @@
+li{
+  padding-left: 30px;
+  margin-top: 20px;
+}
+li a:hover{
+/*  background: none;*/
+  text-decoration: underline;
+}
+
+span{
+  padding-right: 30px;
+}
+a{
+  color:white;
+}
+h3{
+  margin-top: 0px;
+}

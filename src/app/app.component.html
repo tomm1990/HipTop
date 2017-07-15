@@ -1,1 +1,11 @@
-<app-genre-rating class="col-md-12"></app-genre-rating>
+
+
+<!--<app-genre-rating class="col-md-12"></app-genre-rating>-->
+
+<app-intro
+  *ngIf=" loadedFeature==='intro' "
+></app-intro>
+
+<app-program
+  *ngIf=" loadedFeature==='program'  "
+></app-program>

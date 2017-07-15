@@ -1,0 +1,50 @@
+.container{
+  margin-top:100px;
+  //color:white;
+}
+.navbar{
+  color:white;
+  margin-bottom: 0px;
+  border:none;
+  margin-top:50px;
+}
+.navbar a{
+  color:white;
+}
+.navbar a:hover{
+background: none;
+border-bottom: 3px solid white;
+}
+.nav>li>a{
+  padding-bottom: 5px;
+}
+.btn{
+  margin-top: 10px;
+  margin-right: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.thumbnail{
+  margin-right:30px;
+  border:none;
+  margin-top: 10px;
+  padding-left: 0px;
+}
+
+.back{
+  background: url('../../../assets/image/dj-1204x642.jpg') no-repeat;
+  background-size: 100vw;
+}
+
+.line{
+  border-bottom: 3px solid #555555;
+  padding-bottom: 30px;
+}
+.line>p:first-of-type{
+  color:white;
+}
+
+h3{
+  margin-top: 0px;
+  color:white;
+}

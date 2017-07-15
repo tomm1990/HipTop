@@ -1,6 +1,6 @@
 import {EventEmitter,Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
-import {User} from "./model/user.model";
+import {User} from "./app-shared/model/user.model";
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
