@@ -292,19 +292,22 @@ app.post('/Login',hiptopController.login);
      POST
 
    @param
-     email      : String    // This email add to
+     email      : String    // This email add to (USER EMAIL ONLY)
      albumid    : String    // this album
 
    @return
-     code 504 : json Unable to Search Albums documents
-     code 404 : json of already exists
-     code 507 : json Unable to update Albums documents
+     code 504 : json Unable to search Email
+     code 404 : json Cant find Email
+     code 505 : json Unable to search Album
+     code 405 : json Cant find Album
+     code 406 : json already exists
+     code 507 : json cant update
      code 200 : json ok
 
    @i.e
      https://hiptop.herokuapp.com/addLikeToAlbum
  */
-// app.post('/addLikeToAlbum',hiptopController.addLikeToAlbum);
+app.post('/addLikeToAlbum',hiptopController.addLikeToAlbum);
 
 /*
    getAllAlbumsConclusion
@@ -314,8 +317,8 @@ app.post('/Login',hiptopController.login);
       POST
 
    @param
-      amount      : Integer     // This email add to
-      genre       : String      // this album
+      limit       : Integer     // amount of results
+      genre       : String
 
    @return
       code 504 : json Unable to Search Albums documents
@@ -329,6 +332,7 @@ app.post('/getAllAlbumsConclusion',hiptopController.getAllAlbumsConclusion);
 // getSeggestions.limit(8).(genre) diff from original albums
 
 // get artist by email
+// app.post('/getArtistById',hiptopController.getArtistById);
 
 // get artist by id
 

@@ -375,109 +375,85 @@ exports.login = (req,res)=>{
   }).catch((err,res) => exports.respondError(err,res));
 };
 
-// exports.addLikeToAlbum = (req,res)=>{
-//   console.log('addLikeToAlbum()');
-//   console.log(`req.body.email : ${req.body.email}`);
-//   console.log(`req.body.albumid : ${req.body.albumid}`);
-//
-//   User.find({
-//     email : req.body.email
-//   }, verifyEmail,
-//     verifyAlbum,
-//     updateAlbum
-//   ).catch((err,res) => exports.respondError(err,res));
-//
-//   // Album.findOne({
-//   //   id : req.body.albumid
-//   // },(err,resultAlbum)=>{
-//   //   if(err){
-//   //     console.log(`Cant Search :: err -> ${err}`);
-//   //     return res.status(504).json(consts.jsonArr[5]);
-//   //   }
-//   //     if (resultAlbum.likes.indexOf(req.body.email) > -1) {
-//   //       //In the array!
-//   //       console.log(consts.jsonArr[1]);
-//   //       return res.status(404).json(consts.jsonArr[1]);
-//   //     } else {
-//   //       //Not in the array -> need to update
-//   //       var conditions = { id: req.body.albumid }
-//   //         , update = { $push: { likes : req.body.email }  }
-//   //         , options = { multi: true };
-//   //       Album.update(
-//   //         conditions,
-//   //         update,
-//   //         options,
-//   //         (err,result)=>{
-//   //           if(err){
-//   //             console.log(`Cant update :: err -> ${err}`);
-//   //             return res.status(507).json(consts.jsonArr[9]);
-//   //           } else{  // Success
-//   //             console.log(consts.jsonArr[4]);
-//   //             return res.status(200).send(result);
-//   //           }
-//   //         });
-//   //     }
-//   // });
-//
-//   function verifyEmail(err,user){
-//     if(err){
-//       console.log(`Cant search email address :: err -> ${err}`);     // Cant search
-//       console.log(consts.jsonArr[5]);
-//       res.status(504).json(consts.jsonArr[5]);
-//     }
-//     if(user.length == 0) {
-//       console.log(`Cant find email address :: err -> ${err}`);      // Cant find
-//       console.log(consts.jsonArr[6]);
-//       res.status(504).json(consts.jsonArr[6]);
-//     }
-//     console.log(user);
-//     return verifyAlbum(err,user);
-//   }
-//
-//   function verifyAlbum(err,user) {
-//     Album.findOne({
-//       id: req.body.albumid
-//     }, (err, album) => {
-//       if (err) {
-//         console.log(`Cant find album address :: err -> ${err}`);     // Cant search
-//         console.log(consts.jsonArr[5]);                              // Cant search
-//         res.status(504).json(consts.jsonArr[5]);
-//       }
-//       console.log(album);
-//       return updateAlbum(err, album);
-//     });
-//   }
-//
-//   function updateAlbum(err,album) {
-//       if (err) {
-//         console.log(`Cant Search :: err -> ${err}`);
-//         return res.status(504).json(consts.jsonArr[5]);
-//       }
-//       if (album.likes.indexOf(req.body.email) > -1) {
-//         //In the array!
-//         console.log(consts.jsonArr[1]);
-//         return res.status(404).json(consts.jsonArr[1]);
-//       } else {
-//         //Not in the array -> need to update
-//         var conditions = {id: req.body.albumid}
-//           , update = {$push: {likes: req.body.email}}
-//           , options = {multi: true};
-//         Album.update(
-//           conditions,
-//           update,
-//           options,
-//           (err, result) => {
-//             if (err) {
-//               console.log(`Cant update :: err -> ${err}`);
-//               return res.status(507).json(consts.jsonArr[9]);
-//             } else {  // Success
-//               console.log(consts.jsonArr[4]);
-//               return res.status(200).send(result);
-//             }
-//           });
-//       }
-//     }
-// };
+exports.addLikeToAlbum = (req,res)=>{
+  console.log('addLikeToAlbum()');
+  console.log(`req.body.email : ${req.body.email}`);
+  console.log(`req.body.albumid : ${req.body.albumid}`);
+
+  let userToAdd;
+
+  User.find({
+    email : req.body.email
+  }, verifyEmail,
+    verifyAlbum,
+    updateAlbum
+  ).catch((err,res) => exports.respondError(err,res));
+
+  function verifyEmail(err,user){
+    console.log(`verifyEmail()...`);
+    if(err){
+      console.log(`Cant search email address :: err -> ${err}`);     // Cant search
+      console.log(consts.jsonArr[5]);
+      return res.status(504).json(consts.jsonArr[5]);
+    }
+    if(user.length == 0) {
+      console.log(`Cant find email address :: user -> ${user}`);      // Cant find
+      console.log(consts.jsonArr[6]);
+      return res.status(404).json(consts.jsonArr[6]);
+    } else {
+      userToAdd = user;
+      return verifyAlbum(err,user);
+    }
+  }
+
+  function verifyAlbum(err,user) {
+    console.log(`verifyAlbum()...`);
+    Album.findOne({
+      _id: req.body.albumid
+    }, (err, album) => {
+      if (err) {                                                      // Cant search
+        console.log(`Cant search album address :: err -> ${err}`);
+        console.log(consts.jsonArr[5]);
+        return res.status(505).json(consts.jsonArr[5]);
+      }
+      if(album == null ){                                        // Cant find
+        console.log(`Cant find album  :: album -> ${album}`);
+        console.log(consts.jsonArr[6]);
+        return res.status(405).json(consts.jsonArr[6]);
+      } else {
+        console.log(album);
+        return updateAlbum(err, album);
+      }
+    });
+  }
+
+  function updateAlbum(err,album) {
+    console.log(`updateAlbum()...`);
+    if (album.likes.indexOf(userToAdd[0]._id) > -1) {
+        //In the array!
+        console.log(consts.jsonArr[1]);
+        return res.status(406).json(consts.jsonArr[1]);
+    } else {
+      //Not in the array -> need to update
+        var conditions = {_id: req.body.albumid}
+          , update = {$push: { likes : userToAdd[0].id }}
+          , options = {multi: true};
+        Album.update(
+          conditions,
+          update,
+          options,
+          (err, result) => {
+            if (err) {
+              console.log(`Cant update :: err -> ${err}`);
+              return res.status(507).json(consts.jsonArr[9]);
+            } else {  // Success
+              console.log(consts.jsonArr[4]);
+              return res.status(200).send(result);
+            }
+          });
+      }
+    }
+};
 
 exports.getAllAlbumsConclusion = (req,res)=>{
   console.log('getAllAlbumsConclusion()');
@@ -578,3 +554,5 @@ exports.getAllAlbumsConclusion = (req,res)=>{
       }
   }
 };
+
+
