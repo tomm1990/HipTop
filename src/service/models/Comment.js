@@ -5,7 +5,7 @@ const mongoose = require('mongoose'),
   // Comment Schema
   commentSchema = new schema({
     id: {type: Number, index: 1, required: true, unique: true, default: 801, min: 800},
-    userId: Number,
+    userEmail: String,
     message: String,
     date: {type: Date, default: Date.now}
   }, {collection: 'comment'});
@@ -21,19 +21,19 @@ commentSchema.plugin(autoIncrement.autoIncrement.plugin, {
 let CommentSchema = mongoose.model('CommentSchema', commentSchema);
 
 // Validating title
-commentSchema.path('userId').set(
+commentSchema.path('userEmail').set(
   (val)=>{
     // this runs first
     return val;
   });
 
-commentSchema.path('userId').validate(
+commentSchema.path('userEmail').validate(
   (val)=>{
     let valRaw = val;
     // this runs second
-    console.log(`schema :: userId : ${val}`);
-    return valRaw > 0;
-  }, `schema :: userId is missing`);
+    console.log(`schema :: userEmail : ${val}`);
+    return valRaw.length > 0;
+  }, `schema :: userEmail is missing`);
 
 commentSchema.pre('save',
   (next) => {

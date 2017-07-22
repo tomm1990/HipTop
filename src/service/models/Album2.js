@@ -1,16 +1,20 @@
 const mongoose = require('mongoose'),
+  Song = require('./Song'),
+  Comment = require('./Comment'),
+  User = require('./User'),
+
   schema = mongoose.Schema,
   autoIncrement = require('../database'),  // Album Schema
   albumSchema = new schema({
-    id: {type: Number, index: 1, required: true, unique: true, default: 701, min: 700},
-    author: Array,
-    title: String,
-    urlSrc: String,
-    likes: [Number],
-    genre: String,
-    imgUrl: String,
-    comment: [Number],
-    songId: [Number]
+    id:       {type: Number, index: 1, required: true, unique: true, default: 701, min: 700},
+    author:   { type:[schema.ObjectId] , ref: User },        // full json ecxept password
+    title:    String,
+    urlSrc:   String,
+    likes:    { type:[schema.ObjectId] , ref: User },      // array of jsons with images
+    genre:    String,
+    imgUrl:   String,
+    comment:  { type:[schema.ObjectId] , ref: Comment },    // full json
+    songId:   { type:[schema.ObjectId] , ref: Song }
   }, {collection: 'album'});
 
 // auto increment id function

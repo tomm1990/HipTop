@@ -4,6 +4,7 @@ const consts = require('./consts/constring'),
   autoIncrement = require('mongoose-auto-increment'),
   connection = mongoose.createConnection(consts.MLAB_KEY),    //The server option auto_reconnect is defaulted to true
   options = {
+    useMongoClient: true,
     server: {
       auto_reconnect: true,
       socketOptions: {keepAlive: 1, connectTimeoutMS: 30000}

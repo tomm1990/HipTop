@@ -1,18 +1,18 @@
 const mongoose = require('mongoose'),
+  Album = require('../models/Album2'),
   schema = mongoose.Schema,  // User Schema
   userSchema = new schema({
-    // id : {type: Number, index:1, required:true, unique:true ,default:601, min : 600},
-    name: String,
-    title: String, // Artist Only : Stage Name
-    email: {type: String, index: 1, required: true, unique: true},
-    password: String,
-    typeEnum: String, // ENUM { User , Artist }
-    albumId: [Number], // Artist Albums, User PlayList
-    likeAlbum: [Number], // User Usage Only
-    follow: [String], // User Following Artist email, Artist Get follow by User email
-    imgSrc: String, // Personal Pic
-    googleId: String,
-    preferedGenre: [String] // User Usage Only
+    name:           String,
+    title:          String,  // Artist Only : Stage Name
+    email:          {type: String, index: 1, required: true, unique: true},
+    password:       String,
+    typeEnum:       String, // ENUM { User , Artist }
+    albumId:        { type:[schema.ObjectId] , ref: Album }, // Artist Albums, User PlayList
+    likeAlbum:      [Array], // User Usage Only
+    follow:         { type:[schema.ObjectId] , ref: this }, // User Following Artist email, Artist Get follow by User email
+    imgSrc:         String, // Personal Pic
+    googleId:       String,
+    preferedGenre:  [Array] // User Usage Only
   }, {collection: 'user'}),
   UserSchema = mongoose.model('UserSchema', userSchema);
 

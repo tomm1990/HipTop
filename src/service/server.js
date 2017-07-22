@@ -284,6 +284,61 @@ app.post('/getAmountAlbumByGenre',hiptopController.getAmountAlbumByGenre);
  */
 app.post('/Login',hiptopController.login);
 
+/*
+   addLikeToAlbum
+     Adds like to an existing album
+
+   @type
+     POST
+
+   @param
+     email      : String    // This email add to
+     albumid    : String    // this album
+
+   @return
+     code 504 : json Unable to Search Albums documents
+     code 404 : json of already exists
+     code 507 : json Unable to update Albums documents
+     code 200 : json ok
+
+   @i.e
+     https://hiptop.herokuapp.com/addLikeToAlbum
+ */
+// app.post('/addLikeToAlbum',hiptopController.addLikeToAlbum);
+
+/*
+   getAllAlbumsConclusion
+      gets all albums by amount and genre
+
+   @type
+      POST
+
+   @param
+      amount      : Integer     // This email add to
+      genre       : String      // this album
+
+   @return
+      code 504 : json Unable to Search Albums documents
+      code 200 : json Album
+
+   @i.e
+      https://hiptop.herokuapp.com/getAllAlbumsConclusion
+ */
+app.post('/getAllAlbumsConclusion',hiptopController.getAllAlbumsConclusion);
+
+// getSeggestions.limit(8).(genre) diff from original albums
+
+// get artist by email
+
+// get artist by id
+
+// follow users <=> artists
+
+// add like to album <=>users
+
+// add comment to album (update album, update comment)
+// app.post('/addCommentToAlbum',hiptopController.addCommentToAlbum);
+
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });

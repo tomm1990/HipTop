@@ -292,28 +292,37 @@ exports.getAmountAlbumByGenre = (req,res)=>{
 
 exports.signUpUser = (req,res)=>{
   console.log('signUp() ::');
-  console.log(`req.body.email : ${req.body.email}`);
   console.log(`req.body.name : ${req.body.name}`);
+  console.log(`req.body.title : ${req.body.title}`);
+  console.log(`req.body.email : ${req.body.email}`);
   console.log(`req.body.password : ${req.body.password}`);
+  console.log(`req.body.typeEnum : ${req.body.typeEnum}`);
+  console.log(`req.body.albumId : ${req.body.albumId}`);
+  console.log(`req.body.likeAlbum : ${req.body.likeAlbum}`);
+  console.log(`req.body.follow : ${req.body.follow}`);
+  console.log(`req.body.imgSrc : ${req.body.imgSrc}`);
+  console.log(`req.body.googleId : ${req.body.googleId}`);
+  console.log(`req.body.preferedGenre : ${req.body.preferedGenre}`);
 
-  // TODO : Change to adaptive
+  let keys = req.body;
+  console.log(`JSON.stringify(keys) -> ${JSON.stringify(keys)}`);
+
   let newUser = new User({
-    //id : 601,
     name: req.body.name,
-    title: "",
+    title: req.body.title?req.body.title:"No Title",
     email: req.body.email,
     password: req.body.password,
-    typeEnum: "User",
-    albumId: [703, 704, 705],
-    likeAlbum: [701, 702, 703, 704, 705], // User Usage Only
-    follow: [],
-    imgSrc: "",
-    googleId: "",
-    preferedGenre: ["pop"]
+    typeEnum: req.body.typeEnum=="Artist"?"Artist":"User",
+    albumId: req.body.albumId?req.body.albumId:[],
+    likeAlbum: req.body.likeAlbum?req.body.likeAlbum:[], // User Usage Only
+    follow: req.body.follow?req.body.follow:[],
+    imgSrc: req.body.imgSrc?req.body.imgSrc:"https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png",
+    googleId: req.body.googleId?req.body.googleId:"No googleId",
+    preferedGenre: req.body.preferedGenre?req.body.preferedGenre:[]
   });
 
   User.findOne({ // Find exists
-    email : req.body.email
+    email : String(req.body.email).toLowerCase()
   },(err,result)=>{
     if(err){
       console.log(consts.jsonArr[5]); // Cant Search
@@ -364,4 +373,208 @@ exports.login = (req,res)=>{
       }
     }
   }).catch((err,res) => exports.respondError(err,res));
+};
+
+// exports.addLikeToAlbum = (req,res)=>{
+//   console.log('addLikeToAlbum()');
+//   console.log(`req.body.email : ${req.body.email}`);
+//   console.log(`req.body.albumid : ${req.body.albumid}`);
+//
+//   User.find({
+//     email : req.body.email
+//   }, verifyEmail,
+//     verifyAlbum,
+//     updateAlbum
+//   ).catch((err,res) => exports.respondError(err,res));
+//
+//   // Album.findOne({
+//   //   id : req.body.albumid
+//   // },(err,resultAlbum)=>{
+//   //   if(err){
+//   //     console.log(`Cant Search :: err -> ${err}`);
+//   //     return res.status(504).json(consts.jsonArr[5]);
+//   //   }
+//   //     if (resultAlbum.likes.indexOf(req.body.email) > -1) {
+//   //       //In the array!
+//   //       console.log(consts.jsonArr[1]);
+//   //       return res.status(404).json(consts.jsonArr[1]);
+//   //     } else {
+//   //       //Not in the array -> need to update
+//   //       var conditions = { id: req.body.albumid }
+//   //         , update = { $push: { likes : req.body.email }  }
+//   //         , options = { multi: true };
+//   //       Album.update(
+//   //         conditions,
+//   //         update,
+//   //         options,
+//   //         (err,result)=>{
+//   //           if(err){
+//   //             console.log(`Cant update :: err -> ${err}`);
+//   //             return res.status(507).json(consts.jsonArr[9]);
+//   //           } else{  // Success
+//   //             console.log(consts.jsonArr[4]);
+//   //             return res.status(200).send(result);
+//   //           }
+//   //         });
+//   //     }
+//   // });
+//
+//   function verifyEmail(err,user){
+//     if(err){
+//       console.log(`Cant search email address :: err -> ${err}`);     // Cant search
+//       console.log(consts.jsonArr[5]);
+//       res.status(504).json(consts.jsonArr[5]);
+//     }
+//     if(user.length == 0) {
+//       console.log(`Cant find email address :: err -> ${err}`);      // Cant find
+//       console.log(consts.jsonArr[6]);
+//       res.status(504).json(consts.jsonArr[6]);
+//     }
+//     console.log(user);
+//     return verifyAlbum(err,user);
+//   }
+//
+//   function verifyAlbum(err,user) {
+//     Album.findOne({
+//       id: req.body.albumid
+//     }, (err, album) => {
+//       if (err) {
+//         console.log(`Cant find album address :: err -> ${err}`);     // Cant search
+//         console.log(consts.jsonArr[5]);                              // Cant search
+//         res.status(504).json(consts.jsonArr[5]);
+//       }
+//       console.log(album);
+//       return updateAlbum(err, album);
+//     });
+//   }
+//
+//   function updateAlbum(err,album) {
+//       if (err) {
+//         console.log(`Cant Search :: err -> ${err}`);
+//         return res.status(504).json(consts.jsonArr[5]);
+//       }
+//       if (album.likes.indexOf(req.body.email) > -1) {
+//         //In the array!
+//         console.log(consts.jsonArr[1]);
+//         return res.status(404).json(consts.jsonArr[1]);
+//       } else {
+//         //Not in the array -> need to update
+//         var conditions = {id: req.body.albumid}
+//           , update = {$push: {likes: req.body.email}}
+//           , options = {multi: true};
+//         Album.update(
+//           conditions,
+//           update,
+//           options,
+//           (err, result) => {
+//             if (err) {
+//               console.log(`Cant update :: err -> ${err}`);
+//               return res.status(507).json(consts.jsonArr[9]);
+//             } else {  // Success
+//               console.log(consts.jsonArr[4]);
+//               return res.status(200).send(result);
+//             }
+//           });
+//       }
+//     }
+// };
+
+exports.getAllAlbumsConclusion = (req,res)=>{
+  console.log('getAllAlbumsConclusion()');
+  console.log(`genre :: -> ${req.body.genre}`);
+
+  Album.find({
+      genre : req.body.genre
+  },populateAuthor,
+    populateLikes,
+    populateComment,
+    populateSongs).limit(Number(req.body.limit)).catch((err,res) => exports.respondError(err,res));
+
+  function populateAuthor(err,albums) {
+    if(err){
+      console.log(`err -> ${err}`);     // Cant search
+      console.log(consts.jsonArr[5]);   // Cant search
+      res.status(504).json(consts.jsonArr[5]);
+    } else {
+      console.log(`looking for authors..`);
+      Album.populate(albums, {
+          path: 'author',
+          model: User
+        },
+        function(err, albums) {
+          if(err){
+            console.log(`err -> ${err}`); // Cant search
+            res.status(504).json(consts.jsonArr[5]);
+          }
+          console.log(albums);
+          return populateLikes(err,albums);
+        });
+    }
+  }
+
+  function populateLikes(err,albums) {
+    if(err){
+      console.log(`err -> ${err}`); // Cant search
+      console.log(consts.jsonArr[5]); // Cant search
+      res.status(504).json(consts.jsonArr[5]);
+    } else {
+      console.log(`looking for likes..`);
+      Album.populate(albums, {
+          path: 'likes',
+          model: User
+        },
+        function(err, albums) {
+          if(err){
+            console.log(`err -> ${err}`); // Cant search
+            res.status(504).json(consts.jsonArr[5]);
+          }
+          console.log(albums);
+          return populateComment(err,albums);
+        });
+    }
+  }
+
+  function populateComment(err,albums) {
+    if(err){
+      console.log(`err -> ${err}`); // Cant search
+      console.log(consts.jsonArr[5]); // Cant search
+      res.status(504).json(consts.jsonArr[5]);
+    } else {
+      console.log(`looking for comments..`);
+      Album.populate(albums, {
+          path: 'comment',
+          model: Comment
+        },
+        function(err, albums) {
+          if(err){
+            console.log(`err -> ${err}`); // Cant search
+            res.status(504).json(consts.jsonArr[5]);
+          }
+          console.log(albums);
+          return populateSongs(err,albums);
+        });
+    }
+  }
+
+  function populateSongs(err,albums) {
+      if(err){
+        console.log(`err -> ${err}`); // Cant search
+        console.log(consts.jsonArr[5]); // Cant search
+        res.status(504).json(consts.jsonArr[5]);
+      } else {
+        console.log(`looking for songs..`);
+        Album.populate(albums, {
+            path: 'songId',
+            model: Song
+          },
+          function(err, albums) {
+            if(err){
+              console.log(`err -> ${err}`); // Cant search
+              res.status(504).json(consts.jsonArr[5]);
+            }
+            console.log(albums);
+            res.status(200).json(albums);
+          });
+      }
+  }
 };
