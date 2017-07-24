@@ -5,12 +5,13 @@ const mongoose = require('mongoose'),
 
   // Song Schema
   songSchema = new schema({
-    id: {type: Number, index: 1, required: true, unique: true, default: 401, min: 400},
-    author: [String],
-    title: String,
-    urlSrc: String,
-    imgSrc: String,
-    length: String
+    id: {type: Number, index: 1, required: true, unique: true, default: 101, min: 100},
+    author:   [String],
+    title:    String,
+    urlSrc:   String,
+    imgSrc:   String,
+    length:   String,
+    genre :   String
   }, {collection: 'song'});
 
 // auto increment id function

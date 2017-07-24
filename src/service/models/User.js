@@ -8,11 +8,11 @@ const mongoose = require('mongoose'),
     password:       String,
     typeEnum:       String, // ENUM { User , Artist }
     albumId:        { type:[schema.ObjectId] , ref: Album }, // Artist Albums, User PlayList
-    likeAlbum:      [Array], // User Usage Only
-    follow:         { type:[schema.ObjectId] , ref: this }, // User Following Artist email, Artist Get follow by User email
+    likeAlbum:      { type:[schema.ObjectId] , ref: Album }, // User Usage Only
+    follow:         { type:[schema.ObjectId] , ref: this }, // User Following Artist email, Artist Get follow by User
     imgSrc:         String, // Personal Pic
     googleId:       String,
-    preferedGenre:  [Array] // User Usage Only
+    preferedGenre:  [String] // User Usage Only
   }, {collection: 'user'}),
   UserSchema = mongoose.model('UserSchema', userSchema);
 
