@@ -12,26 +12,23 @@
   <app-music-player class="col-md-4"></app-music-player>
   <div class="thumbnail col-md-6 ">
     <img src="../assets/image/maxresdefault.jpg" alt="">
-    <div class="bar">
-      <div class="round1 text-center">
-        <p class="text-center">1</p>
-      </div>
-      <div class="round2 text-center">
-        <p class="text-center">2</p>
-      </div>
-      <div class="round3 text-center currentStep">
-        <p class="text-center">3</p>
-      </div>
-      <div class="round4 text-center">
-        <p class="text-center">4</p>
-      </div>
-      <div class="round5 text-center">
-        <p class="text-center">5</p>
-      </div>
+    <div class="col-md-12">
+     <button type="button" (click)="onGenreRated(1)"
+             class="btn btn-sm btn-default ">1</button>
+     <button type="button" (click)="onGenreRated(2)"
+             class="btn btn-sm btn-default round2">2</button>
+     <button type="button" (click)="onGenreRated(3)"
+             class="btn btn-sm btn-default round3">3</button>
+     <button type="button" (click)="onGenreRated(4)"
+             class="btn btn-sm btn-default round4">4</button>
+     <button type="button" (click)="onGenreRated(5)"
+             class="btn btn-sm btn-default round5">5</button>
     </div>
   </div>
   <div class="col-md-12">
-    <button class="btn  col-md-4">CONTINUE</button>
+    <button class="btn  col-md-4"
+            routerLinkActive="active" routerLink="/main/{{genreRaited[0]}}/{{genreRaited[1]}}"
+            (click)="onGoToMain()">CONTINUE</button>
     <a href="">skip</a>
   </div>
 </div>

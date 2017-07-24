@@ -1,0 +1,64 @@
+.container{
+  margin-top:4vw;
+}
+
+.btn{
+  margin-top:3vw;
+}
+
+.back{
+  background: url('../../../assets/image/back.png') no-repeat;
+  //background-size: 100vw;
+  background-repeat: repeat-x;
+}
+p{
+  color:white;
+  padding-left:20px;
+}
+.thumbnail p{
+  color:#212121;
+  border-bottom: 1px solid white;
+}
+h3{
+  color:white;
+}
+.thumbnail{
+  border-radius: 0%;
+  background: #E1E1E1;
+  padding: 0px;
+  height:200px;
+}
+.thumbnail img{
+  border-radius: 50%;
+  border: 1px solid white;
+  height:4vw;
+  float:left;
+
+}
+a{
+  color:white;
+}
+
+.panel-default{
+  border-radius: 0;
+  background: #E1E1E1;
+  border:transparent;
+}
+
+.panel-heading{
+  border-bottom: 1px solid white;
+  background: #E1E1E1;
+  padding-left:0.5vw;
+  padding-top:0;
+  padding-bottom:0;
+}
+.songWraper{
+  margin-bottom:6vw;
+}
+.songWraper p{
+  color:black;
+  margin-bottom:0px;
+}
+.panel a{
+  color:black;
+}

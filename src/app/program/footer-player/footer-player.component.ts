@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
+import { Album } from "../../app-shared/model/album.model";
 
 @Component({
   selector: 'app-footer-player',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['footer-player.component.css']
 })
 export class FooterPlayerComponent implements OnInit {
-
+@Input()  albumToPlay:Album;
   constructor() { }
 
   ngOnInit() {

@@ -1,0 +1,29 @@
+<div class="col-md-6 col-md-offset-1">
+  <div class="well well-sm">
+    <form>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="input-group">
+            <input type="text" class="form-control" id="newComment"
+              placeholder="Write a comment"
+              #newCommentInput>
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit"
+                (click)="onAddComment()">Post</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <p *ngIf="albumWall">
+    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+     {{albumWall.comment.length}} Comments
+  </p>
+  <div *ngIf="albumWall" class="comments-container col-md-12">
+    <app-comment
+      *ngFor="let comm of albumWall.comment"
+      [comment]="comm"
+      class="col-md-12"></app-comment>
+  </div>
+</div>

@@ -12,3 +12,14 @@ img{
   border-radius: 10px;
   margin-left: 10px;
 }
+a{
+  color:black;
+}
+
+.playImage{
+  padding:0;
+}
+
+.row{
+  margin-bottom: 5vw;
+}

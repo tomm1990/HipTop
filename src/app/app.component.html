@@ -1,11 +1,17 @@
 
 
 <!--<app-genre-rating class="col-md-12"></app-genre-rating>-->
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
 
 <app-intro
   *ngIf=" loadedFeature==='intro' "
+(changeMode)="onChangeMode($event)"
 ></app-intro>
 
 <app-program
   *ngIf=" loadedFeature==='program'  "
+  (changeMode)="onChangeMode($event)"
 ></app-program>

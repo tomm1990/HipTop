@@ -1,45 +1,62 @@
-<div class="col-md-12 back">
-
-
-
-<div class="container col-md-8 col-md-offset-2 line">
-  <img src="../../../../../assets/image/b371-b3f4-4b13-a949-e7c568491a5f.jpg" alt="" class="col-md-4">
-  <h3>Tru Thoughts</h3>
-  <p>Brighton, United Kingdom</p>
-  <nav class="navbar">
-    <ul class="nav navbar-nav">
-      <li><a href="">Overview</a></li>
-      <li><a href="">Tracks</a></li>
-      <li><a href="">Albums</a></li>
-      <li><a href="">Similar Artists</a></li>
-    </ul>
-  </nav>
-  <div class="col-md-6">
-   <button type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Play</button>
-   <button type="button" class="btn btn-sm btn-default"> Follow</button>
-   <button type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Share</button>
+<div class="col-md-12 back" *ngIf="user">
+  <div class="container col-md-8 col-md-offset-2 line">
+    <img src="{{user.imgSrc}}" alt="" class="col-md-4">
+    <h3>{{user.title}}</h3>
+    <p>{{user.name}}</p>
+    <nav class="navbar">
+      <ul class="nav navbar-nav">
+        <li><a href="">Overview</a></li>
+        <li><a href="">Tracks</a></li>
+        <li><a href="">Albums</a></li>
+        <li><a href="">Similar Artists</a></li>
+      </ul>
+    </nav>
+    <div class="col-md-6">
+     <button type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Play</button>
+     <button type="button" class="btn btn-sm btn-default" (click)="onFollow()"> Follow</button>
+     <button type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Share</button>
+    </div>
+    <div class="col-md-6">
+       <div class="thumbnail col-md-3">
+         <p class="text-center">{{user.follow.length}}</p>
+         <p class="text-center">Followers</p>
+       </div>
+       <div class="thumbnail col-md-3">
+         <p class="text-center">{{user.albumId.length}}</p>
+         <p class="text-center">Shows</p>
+       </div>
+       <div class="thumbnail col-md-3">
+         <p class="text-center">0</p>
+         <p class="text-center">Following</p>
+       </div>
+       <p>Please take time to chack my dj channel out</p>
+       <a href="">www.youtube.com/channel/xxxx</a>
+    </div>
   </div>
-  <div class="col-md-6">
-     <div class="thumbnail col-md-3">
-       <p class="text-center">299</p>
-       <p class="text-center">Followers</p>
-     </div>
-     <div class="thumbnail col-md-3">
-       <p class="text-center">94</p>
-       <p class="text-center">Shows</p>
-     </div>
-     <div class="thumbnail col-md-3">
-       <p class="text-center">0</p>
-       <p class="text-center">Following</p>
-     </div>
-     <p>Please take time to chack my dj channel out</p>
-     <a href="">www.youtube.com/channel/xxxx</a>
+  </div>
+<div *ngIf="user" class="col-md-8 col-md-offset-2 albumContainer">
+  <h3>ALL MIXTYPES</h3>
+<div *ngFor="let alb of user.albumId">
+  <div class="row">
+    <div class="col-md-6 col-md-3">
+      <a routerLinkActive="active" routerLink="/album/{{alb._id}}" class="thumbnail">
+        <img src={{alb.imgUrl}} class="col-md-12" alt="...">
+      </a>
+    </div>
+    <a  routerLinkActive="active" routerLink="/artist/{{alb._id}}">
+    <h4>{{user.name}}</h4>
+  </a>
+    <a routerLinkActive="active" routerLink="/album/{{alb._id}}">
+      <p>{{alb.title}}</p>
+    </a>
+    <span class="label label-default">{{alb.id}}</span>
+    <img src=".\assets\image\graph.png" alt="">
+    <span class="label label-default">{{alb.id}}</span>
+    <div class="col-md-6 col-md-offset-3">
+     <button type="button" class="btn btn-sm btn-default likeBtn"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Like</button>
+     <button type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Share</button>
+     <button type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add to playlist</button>
+   </div>
   </div>
 </div>
-
 </div>
-
-<app-playlists-container class="col-md-12"
->
-
-</app-playlists-container>

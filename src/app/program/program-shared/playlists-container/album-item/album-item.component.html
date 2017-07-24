@@ -1,15 +1,19 @@
 <div class="row">
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src={{album.imgUrl}} alt="...">
+  <div class="col-md-6 col-md-3">
+    <a routerLinkActive="active" routerLink="/album/{{album._id}}" class="thumbnail">
+      <img src={{album.imgUrl}} class="col-md-12" alt="...">
     </a>
   </div>
-  <h4>{{album.author}}</h4>
-  <p>{{album.title}}</p>
+  <a *ngFor="let aut of album.author" routerLinkActive="active" routerLink="/artist/{{aut._id}}">
+  <h4>{{aut.name}}</h4>
+</a>
+  <a routerLinkActive="active" routerLink="/album/{{album._id}}">
+    <p>{{album.title}}</p>
+  </a>
   <span class="label label-default">{{album.id}}</span>
   <img src=".\assets\image\graph.png" alt="">
   <span class="label label-default">{{album.id}}</span>
-  <div class="col-md-5 col-md-offset-2">
+  <div class="col-md-5 col-md-offset-3">
    <button type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Like</button>
    <button type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Share</button>
    <button type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add to playlist</button>

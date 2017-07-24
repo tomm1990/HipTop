@@ -21,13 +21,14 @@
     <div class="col-md-10">
       <div class="checkbox">
         <label>
-          <input type="checkbox"> I agree to the Terms of use and Privacy policy.
+          <input type="checkbox" name="confirmation" ngModel> I agree to the Terms of use and Privacy policy.
         </label>
       </div>
     </div>
   </div>
   <div class="form-group">
-      <button type="submit" class="btn btn-warning col-md-9">Sign in</button>
+      <button type="submit" class="btn btn-warning col-md-9"
+              routerLinkActive="active" routerLink="/subGenreRating">CONTINUE</button>
   </div>
 </form>
 <div

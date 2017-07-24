@@ -26,11 +26,21 @@ import { ProgramComponent } from './program/program.component';
 import { AlbumWallComponent } from './program/album-wall/album-wall.component';
 import { ContentMainComponent } from './program/content-main/content-main.component';
 import {Routes, RouterModule} from "@angular/router";
+import { CommentsComponent } from './program/album-wall/comments/comments.component';
+import { CommentComponent } from './program/album-wall/comments/comment/comment.component';
+import { GetAlbumService } from './app.GetAlbumService'
+import { GetArtistService } from './app.GetUserService';
+import { RootComponent } from './intro/root/root.component';
+import { SignUpStep1Component } from './intro/sign-up-step1/sign-up-step1.component'
+
 
 const appRoutes : Routes = [
-  { path : 'main' , component : ContentMainComponent },
-  { path : 'album' , component : AlbumWallComponent },
-  { path : 'artist' , component : ArtistWallComponent }
+  { path : 'main/:ganre1/:ganre2' , component : ContentMainComponent },
+  { path : 'album/:id' , component : AlbumWallComponent },
+  { path : 'artist/:id' , component : ArtistWallComponent },
+  { path : '' , component : RootComponent},
+  { path : 'signUp' , component : SignUpStep1Component},
+  { path : 'subGenreRating' , component : GenreRatingComponent}
 ];
 
 
@@ -55,18 +65,22 @@ const appRoutes : Routes = [
     IntroComponent,
     ProgramComponent,
     AlbumWallComponent,
-    ContentMainComponent
+    ContentMainComponent,
+    CommentsComponent,
+    CommentComponent,
+    RootComponent,
+    SignUpStep1Component
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
   ],
   exports:[
     RouterModule
   ],
-  providers: [AlbumService,SignInService],
+  providers: [AlbumService,SignInService,GetAlbumService,GetArtistService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

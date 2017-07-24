@@ -3,8 +3,12 @@ li{
   margin-top: 20px;
 }
 li a:hover{
-/*  background: none;*/
+  background: none;
   text-decoration: underline;
+}
+
+li a:link{
+  background: none;
 }
 
 span{

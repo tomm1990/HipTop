@@ -13,4 +13,7 @@ export class PopularItemComponent implements OnInit {
   ngOnInit() {
   }
 
+  func(){
+    console.log('test');
+  }
 }

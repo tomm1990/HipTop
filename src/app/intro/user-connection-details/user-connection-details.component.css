@@ -4,8 +4,9 @@ text-align:left;
 }
 
 .form-horizontal .btn{
-  background: yellow;
-  border: yellow;
+  background: #FFFF00;
+  border: transparent;
+  color:black;
   margin-left: 15px;
   margin-top: 20px;
 }

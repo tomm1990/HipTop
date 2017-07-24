@@ -10,7 +10,9 @@ import { SignInService } from "../../app.signInService";
   styleUrls: ['user-connection-details.component.css']
 })
 export class UserConnectionDetailsComponent implements OnInit {
+
 @Output() identification = new EventEmitter<Identification>();
+@Output() changeToProgram = new EventEmitter<string>();
   user: User;
 
   constructor(private identificationService:SignInService) { }
@@ -21,12 +23,17 @@ export class UserConnectionDetailsComponent implements OnInit {
 
   onSignIn(form:NgForm){
     const val = form.value;
-  //  this.user = this.identificationService.createUser();
-  console.log(form);
+
+  console.log(val);
+  if(val.confirmation===true){
     this.identificationService.createUser(val.userNameInput,val.emailInput,val.passwordInput).then((user: User)=>{
       this.user = user;
       console.log("this.user: " + this.user.email);
     });
+  }
+  
+    this.changeToProgram.emit('program');
+
   //  const newIdentification =
   //  new Identification(val.email, val.userName, val.password);
   //  this.identification.emit(newIdentification);

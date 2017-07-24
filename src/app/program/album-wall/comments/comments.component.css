@@ -1,0 +1,30 @@
+.well{
+  margin-top:4vw;
+  background: #1FCEA8;
+  border:transparent;
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+.input-group{
+  z-index: 0;
+}
+app-comment{
+  border-bottom: 1px solid #cccccc;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+app-comment:last-of-type{
+  border-bottom: none;
+}
+
+.comments-container{
+  border-top:1px solid black;
+  border-bottom:1px solid black;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  margin-bottom: 2vw;
+  padding-left: 0px;
+  padding-right: 0px;
+}

@@ -1,14 +1,22 @@
 .thumbnail{
   border:none;
   background: none;
-
+  height:18vw;
 }
 img{
-  border: 3px solid #1FCEA8;
+  border: 5px solid #1FCEA8;
+  width:80%;
 }
 .col-md-12{
   background: #367F6C;
 }
-*{
-//   color:white;
+h4{
+  margin:0;
+}
+a{
+   color:white;
+}
+
+.col-md-3{
+  padding:0;
 }

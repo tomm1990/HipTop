@@ -3,12 +3,15 @@
   background: #1FCEA8;
   border: #1FCEA8;
   padding: 0px;
+  font-size: 0.75vw;
 }
 .progress{
   margin-bottom: 0px;
+  height:12px;
 }
 .panel-body{
-  pading-bottom: 0px;
+  padding-bottom: 8px;
+  padding-top: 8px;
 }
 p{
   margin-bottom: 0px;

@@ -8,6 +8,7 @@ import {Album} from "../../../../app-shared/model/album.model";
 })
 export class AlbumItemComponent implements OnInit {
   @Input() album : Album;
+
   constructor() { }
 
   ngOnInit() {

@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['music-player.component.css']
 })
 export class MusicPlayerComponent implements OnInit {
-
+timer:string;
   constructor() { }
 
   ngOnInit() {
+    this.timer="1:24";
   }
+
+
+
 
 }
