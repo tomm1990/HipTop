@@ -5,7 +5,6 @@
 /*.panel-body p{*/
   /*margin-bottom: 0px;*/
 /*}*/
-
 .progress{
   margin-bottom: 0px;
   height:1vw;
@@ -47,7 +46,7 @@ p{
 .thumbnail{
   background: #1FCEA8;
   border: transparent;
-  
+
 }
 .col-md-12,.col-md-10{
   padding-bottom: 0px;

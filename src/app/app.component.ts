@@ -10,7 +10,6 @@ export class AppComponent {
   loadedFeature = 'intro';
   //Output() userInstance : User;
 
-
 constructor(private AlService:AlbumService){}
 ngOnInit(){
   //this.loadedFeature = this. AlService.changeAppState();

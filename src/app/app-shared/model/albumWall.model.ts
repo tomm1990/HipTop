@@ -14,6 +14,7 @@ export class AlbumWall {
   public songId:Song[];
 
 
+
   constructor(id: string, author: User[], title: string, urlSrc: string, likes: User[], genre: string, imgUrl: string, comment: CommentData[], songId: Song[]) {
     console.log("constractor " + author);
     this.id = id;

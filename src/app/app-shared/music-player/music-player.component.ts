@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: 'music-player.component.html',
   styleUrls: ['music-player.component.css']
 })
+
 export class MusicPlayerComponent implements OnInit {
 timer:string;
   constructor() { }

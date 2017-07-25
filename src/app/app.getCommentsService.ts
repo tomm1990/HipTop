@@ -3,7 +3,6 @@ import {Http, Response} from '@angular/http';
 import {User} from "./app-shared/model/User.model";
 import 'rxjs/add/operator/toPromise';
 
-
 @Injectable()
 export class GetArtistService{
 
@@ -17,7 +16,7 @@ export class GetArtistService{
          "googleId",
          ["follow1","follow2","follow3","foolow4","follow5"],
          "../../assets/image/b371-b3f4-4b13-a949-e7c568491a5f.jpg",
-        
+
        ["gunre1","gunre2"]);
 
 

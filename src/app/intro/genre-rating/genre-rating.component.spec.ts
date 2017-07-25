@@ -13,6 +13,7 @@ describe('GenreRatingComponent', () => {
     .compileComponents();
   }));
 
+
   beforeEach(() => {
     fixture = TestBed.createComponent(GenreRatingComponent);
     component = fixture.componentInstance;

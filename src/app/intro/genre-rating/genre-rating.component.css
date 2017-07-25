@@ -9,7 +9,7 @@ h3:first-of-type{
 .thumbnail .btn{
   border-radius: 50%;
   background-color: #1FCEA8;
-  border:#1FCEA8;;
+  border:#1FCEA8;
 }
 .thumbnail .btn:hover{
   background-color: #d7fff1;

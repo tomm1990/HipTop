@@ -57,7 +57,6 @@ albumWall:AlbumWall;
     this.AlbuService.insertCommentToDB('5975f543e33a59d85e114021',comment.message,this.id).then((res: string)=>{
       this.albumWall.comment.push(comment);
     });
-
   }
   onAddLike(){
     const user = new User ("name",

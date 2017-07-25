@@ -9,6 +9,7 @@ export class CommentData {
   //constructor(id: string, user: User, message: string, date: Date) {
   constructor(id: string, name: string, img:string, message: string, date: Date) {
 
+
     this.id = id;
     this.user = new User(
     name,

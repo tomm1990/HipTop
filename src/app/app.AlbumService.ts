@@ -41,7 +41,6 @@ export class AlbumService{
     ["songid1","songid2"])
     ];
 */
-
   private songs:Song[] = [new Song(222,["author1","author2"],"title",
 "../../assets/image/AlbumCover.png","../../assets/image/AlbumCover.png",
 "4","Britpop"),new Song(222,["author1","author2"],"title",

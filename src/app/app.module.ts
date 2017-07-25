@@ -33,7 +33,6 @@ import { GetArtistService } from './app.GetUserService';
 import { RootComponent } from './intro/root/root.component';
 import { SignUpStep1Component } from './intro/sign-up-step1/sign-up-step1.component'
 
-
 const appRoutes : Routes = [
   { path : 'main/:ganre1/:ganre2' , component : ContentMainComponent },
   { path : 'album/:id' , component : AlbumWallComponent },

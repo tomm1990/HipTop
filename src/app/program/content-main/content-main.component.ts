@@ -7,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContentMainComponent implements OnInit {
   // content = 'main';
-
-
   constructor() { }
 
   ngOnInit() {

@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MusicSetComponent } from './music-set.component';
 
 describe('MusicSetComponent', () => {

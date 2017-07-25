@@ -4,6 +4,7 @@ import {User} from '../../app-shared/model/user.model';
 import {Identification} from '../../app-shared/model/identification.model';
 import { SignInService } from "../../app.signInService";
 
+
 @Component({
   selector: 'app-user-connection-details',
   templateUrl: 'user-connection-details.component.html',
@@ -31,7 +32,7 @@ export class UserConnectionDetailsComponent implements OnInit {
       console.log("this.user: " + this.user.email);
     });
   }
-  
+
     this.changeToProgram.emit('program');
 
   //  const newIdentification =

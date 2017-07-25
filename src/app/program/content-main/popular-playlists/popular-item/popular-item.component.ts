@@ -14,6 +14,6 @@ export class PopularItemComponent implements OnInit {
   }
 
   func(){
-    console.log('test');
+      console.log('test');
   }
 }

@@ -1,7 +1,7 @@
 <div class="col-md-3">
   <div class="thumbnail">
     <a routerLinkActive="active" routerLink="/album/{{album._id}}">
-      <img src={{album.imgUrl}}  alt="...">
+        <img src={{album.imgUrl}}  alt="...">
     </a>
     <div class="caption">
       <a *ngFor=" let aut of album.author" routerLinkActive="active" routerLink="/artist/{{aut._id}}">

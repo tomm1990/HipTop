@@ -18,6 +18,7 @@ export class GenreRatingComponent implements OnInit {
   ratingOver:string;
   constructor(private AlbuService:AlbumService) { }
 
+
   ngOnInit() {
     this.ratingOver="false";
     this.songs = this.AlbuService.getSongsToRate();

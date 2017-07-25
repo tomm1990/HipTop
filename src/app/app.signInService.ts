@@ -15,8 +15,6 @@ export class SignInService{
             .toPromise()
             .then(response => response.json() as User)
       .catch(err => err.json() as User);
-
-
   //  return this.user;
   }
 

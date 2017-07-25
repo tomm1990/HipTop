@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ArtistWallComponent } from './artist-wall.component';
 
 describe('ArtistWallComponent', () => {

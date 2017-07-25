@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PopularPlaylistsComponent } from './popular-playlists.component';
 
 describe('PopularPlaylistsComponent', () => {

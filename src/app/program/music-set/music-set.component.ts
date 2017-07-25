@@ -5,6 +5,7 @@ import { User } from "../../app-shared/model/User.model";
   templateUrl: 'music-set.component.html',
   styleUrls: ['music-set.component.css']
 })
+
 export class MusicSetComponent implements OnInit {
 @Input() user : User;
   constructor() { }

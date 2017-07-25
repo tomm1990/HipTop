@@ -7,6 +7,7 @@ export class Song {
   public length:string;
   public genre:string;
 
+
   constructor(id: number, author: string[], title: string,imgSrc:string ,urlSrc: string, length:string,genre:string) {
     this.id = id;
     this.genre = genre;

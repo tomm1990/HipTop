@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SignUpStepsComponent } from './sign-up-steps.component';
 
 describe('SignUpStepsComponent', () => {

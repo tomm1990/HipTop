@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Album} from "../../../app-shared/model/album.model";
 import {AlbumService} from "../../../app.AlbumService";
 import { ActivatedRoute, Params} from '@angular/router';
+
 @Component({
   selector: 'app-playlists-container',
   templateUrl: 'playlists-container.component.html',

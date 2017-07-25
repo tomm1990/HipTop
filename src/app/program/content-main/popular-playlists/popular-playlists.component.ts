@@ -13,7 +13,6 @@ export class PopularPlaylistsComponent implements OnInit {
   albums: Album[] = []
   ganre: string;
   constructor(private AlService:AlbumService, private route:ActivatedRoute) { }
-
     ngOnInit() {
 
       this.route.params.subscribe(

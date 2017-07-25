@@ -6,6 +6,7 @@ import {Album} from "../../../../app-shared/model/album.model";
   templateUrl: 'album-item.component.html',
   styleUrls: ['album-item.component.css']
 })
+
 export class AlbumItemComponent implements OnInit {
   @Input() album : Album;
 

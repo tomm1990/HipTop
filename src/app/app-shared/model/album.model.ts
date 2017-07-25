@@ -10,6 +10,7 @@ export class Album {
   public songId:string[];
 
 
+
   // constructor(name: string, desciption: string, image: string) {
   //   this.name    = name;
   //   this.desc    = desciption;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-sign-up-step1',
   templateUrl: './sign-up-step1.component.html',

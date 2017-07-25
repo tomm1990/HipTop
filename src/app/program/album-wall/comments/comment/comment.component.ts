@@ -10,7 +10,6 @@ export class CommentComponent implements OnInit {
 @Input() comment : CommentData;
   constructor() { }
 
-
   ngOnInit() {
     //console.log(`this.comment.user -> ${this.comment.user}`);
     //console.log(`this.comment.user.name -> ${this.comment.user.name}`);

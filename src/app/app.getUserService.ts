@@ -3,7 +3,6 @@ import {Http, Response} from '@angular/http';
 import {User} from "./app-shared/model/User.model";
 import 'rxjs/add/operator/toPromise';
 
-
 @Injectable()
 export class GetArtistService{
 /*

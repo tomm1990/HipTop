@@ -7,6 +7,7 @@ import {User} from "../../../app-shared/model/user.model";
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.css']
 })
+
 export class CommentsComponent implements OnInit {
 @ViewChild('newCommentInput') newCommentInputRef  : ElementRef;
 @Input() albumWall : AlbumWall;

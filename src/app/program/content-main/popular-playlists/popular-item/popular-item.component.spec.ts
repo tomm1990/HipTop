@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PopularItemComponent } from './popular-item.component';
 
 describe('PopularItemComponent', () => {

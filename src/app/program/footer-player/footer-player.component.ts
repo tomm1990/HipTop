@@ -6,6 +6,7 @@ import { Album } from "../../app-shared/model/album.model";
   templateUrl: 'footer-player.component.html',
   styleUrls: ['footer-player.component.css']
 })
+
 export class FooterPlayerComponent implements OnInit {
 @Input()  albumToPlay:Album;
   constructor() { }

@@ -6,7 +6,6 @@ import {Song} from "./app-shared/model/song.model";
 import {User} from "./app-shared/model/user.model";
 import 'rxjs/add/operator/toPromise';
 
-
 @Injectable()
 export class GetAlbumService{
 /*

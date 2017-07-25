@@ -26,7 +26,7 @@ export class ArtistWallComponent implements OnInit {
         console.log("length " + this.user);
     });
 
-  //  this.user = this.AlService.getArtist(this.id);
+
   //  console.log(this.user.imgSrc);
   }
   onFollow(){

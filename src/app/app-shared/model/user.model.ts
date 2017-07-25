@@ -13,7 +13,6 @@ export class User {
   public googleId:string;
   public preferedGenre:string[];
 
-
   constructor( name: string,
      title: string,
       email: string,
