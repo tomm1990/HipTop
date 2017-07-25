@@ -26,8 +26,16 @@
                 <a href="#signUpUser"><li>Sign Up User</li></a>
                 <a href="#removeAllUsers"><li>Remove All Users</li></a>
                 <a href="#Login"><li>Login</li></a>
+                <a href="#addLikeToAlbum"><li>Add Like To Album</li></a>
+                <a href="#getAllAlbumsConclusion"><li>Get All Album By Amount and Genre</li></a>
+                <a href="#getArtistById"><li>Get Artist By ID</li></a>
+                <a href="#addCommentToAlbum"><li>Add Comment to Album</li></a>
+                <a href="#getAlbumByIdHybrid"><li>Get Album By ID Hybrid</li></a>
+                <a href="#addFollower"><li>Add Follower to Artist</li></a>
+                <a href="#getRandomFromGenre"><li>Get 5 Random Songs</li></a>
+                <a href="#addPopAlbum"><li>Add Album From iTunes API</li></a>
+                
                 <a href="#Error"><li>Error Handler</li></a>
-
             </ul>
         </div>
     </nav>
@@ -906,6 +914,543 @@
             </pre>
         </exs>
     </main>
+    <main> 
+        <desc>
+            <section>
+                    <h1>
+                        <a name="addLikeToAlbum">addLikeToAlbum</a>
+                    </h1>
+                <prop>
+                    <h2>
+                        Description:
+                    </h2>
+                    <h3>
+                        Adds like to an existing album<br>
+                        User likes album
+                    </h3>
+                </prop>
+                <prop>
+                    <h2>
+                        HTTP Request:
+                    </h2>
+                    <code class="prettyprint">
+                        POST https://hiptop.herokuapp.com/addLikeToAlbum
+                    </code>        
+                </prop>
+                <prop>
+                    <h2>
+                        Query Parameters
+                    </h2>
+                    
+  
+                    <table>
+                        <thead>
+                            <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>email</td>
+                                <td>String</td>
+                                <td>User Email</td>
+                            </tr>
+                            <tr>
+                                <td>albumid</td>
+                                <td>String</td>
+                                <td>Album's mLab ID</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </prop>
+            </section>
+        </desc>        
+        <exs>
+            <blockquote>
+                <p>https://hiptop.herokuapp.com/addLikeToAlbum</p>
+                <p><br>{ <br>
+                    &nbsp;&nbsp;email : tom@goldberg.com,<br>
+                    &nbsp;&nbsp;albumid : 5975f543e33a59d85e114011<br>                   
+                    }</p>
+            </blockquote><br>
+            <blockquote>
+                <p>The HTTP request returns JSON structured like this:</p>
+            </blockquote>
+            <pre class="hjson3" >
+                
+            </pre>
+        </exs>
+    </main>
+    <main>       
+        <desc>
+            <section>
+                    <h1>
+                        <a name="getAllAlbumsConclusion">getAllAlbumsConclusion</a>
+                    </h1>
+                <prop>
+                    <h2>
+                        Description:
+                    </h2>
+                    <h3>
+                        Gets all albums by specified amount and genre
+                    </h3>
+                </prop>
+                <prop>
+                    <h2>
+                        HTTP Request:
+                    </h2>
+                    <code class="prettyprint">
+                        POST https://hiptop.herokuapp.com/getAllAlbumsConclusion
+                    </code>        
+                </prop>
+                <prop>
+                    <h2>
+                        Query Parameters
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>limit</td>
+                                <td>Integer</td>
+                                <td>Amount of results</td>
+                            </tr>
+                            <tr>
+                                <td>genre</td>
+                                <td>String</td>
+                                <td>Genre</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </prop>
+            </section>
+        </desc>        
+        <exs>
+            <blockquote>
+                <p>https://hiptop.herokuapp.com/getAllAlbumsConclusion</p>
+                <p><br>{ <br>
+                    &nbsp;&nbsp;limit : 4,<br>
+                    &nbsp;&nbsp;genre : Pop<br>                   
+                    }</p>
+            </blockquote><br>
+            <blockquote>
+                <p>The HTTP request returns JSON structured like this:</p>
+            </blockquote>
+            <pre class="hjson3" >
+                
+            </pre>
+        </exs>
+    </main>
+    <main>
+        <desc>
+            <section>
+                    <h1>
+                        <a name="getArtistById">getArtistById</a>
+                    </h1>
+                <prop>
+                    <h2>
+                        Description:
+                    </h2>
+                    <h3>
+                        get Artist By mLab ID
+                    </h3>
+                </prop>
+                <prop>
+                    <h2>
+                        HTTP Request:
+                    </h2>
+                    <code class="prettyprint">
+                        POST https://hiptop.herokuapp.com/getArtistById
+                    </code>        
+                </prop>
+                <prop>
+                    <h2>
+                        Query Parameters
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>id</td>
+                                <td>Integer</td>
+                                <td>Artist mLab ID ONLY</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </prop>
+            </section>
+        </desc>        
+        <exs>
+            <blockquote>
+                <p>https://hiptop.herokuapp.com/getArtistById</p>
+                <p><br>{ <br>
+                    &nbsp;&nbsp;id : 5975f543e33a59d85e114021<br>                   
+                    }</p>
+            </blockquote><br>
+            <blockquote>
+                <p>The HTTP request returns JSON structured like this:</p>
+            </blockquote>
+            <pre class="hjson3" >
+                
+            </pre>
+        </exs>
+    </main>
+    <main>
+        <desc>
+            <section>
+                    <h1>
+                        <a name="addCommentToAlbum">addCommentToAlbum</a>
+                    </h1>
+                <prop>
+                    <h2>
+                        Description:
+                    </h2>
+                    <h3>
+                        Creates new Comment and place it into Album comments array
+                    </h3>
+                </prop>
+                <prop>
+                    <h2>
+                        HTTP Request:
+                    </h2>
+                    <code class="prettyprint">
+                        POST https://hiptop.herokuapp.com/addCommentToAlbum
+                    </code>        
+                </prop>
+                <prop>
+                    <h2>
+                        Query Parameters
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>userId</td>
+                                <td>String</td>
+                                <td>User's ID who wrote the comment</td>
+                            </tr>
+                            <tr>
+                                <td>message</td>
+                                <td>String</td>
+                                <td>User's message</td>
+                            </tr>
+                            <tr>
+                                <td>albumId</td>
+                                <td>String</td>
+                                <td>Album to put the message within</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </prop>
+            </section>
+        </desc>        
+        <exs>
+            <blockquote>
+                <p>https://hiptop.herokuapp.com/addCommentToAlbum</p>
+                <p><br>{ <br>
+                    &nbsp;&nbsp;userId : 59763f133ff049e14fe12967,<br>                   
+                    &nbsp;&nbsp;message : Like it!,<br>                   
+                    &nbsp;&nbsp;albumId : 5975f65be33a59d85e114033<br>                   
+                    }</p>
+            </blockquote><br>
+            <blockquote>
+                <p>The HTTP request returns JSON structured like this:</p>
+            </blockquote>
+            <pre class="hjson3" >
+                
+            </pre>
+        </exs>
+    </main>
+    <main>
+        <desc>
+            <section>
+                    <h1>
+                        <a name="getAlbumByIdHybrid">getAlbumByIdHybrid</a>
+                    </h1>
+                <prop>
+                    <h2>
+                        Description:
+                    </h2>
+                    <h3>
+                        Gets Albums by specific (String:) mLab ID or Original (Int:) ID
+                    </h3>
+                </prop>
+                <prop>
+                    <h2>
+                        HTTP Request:
+                    </h2>
+                    <code class="prettyprint">
+                        POST https://hiptop.herokuapp.com/getAlbumByIdHybrid
+                    </code>        
+                </prop>
+                <prop>
+                    <h2>
+                        Query Parameters
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>albumId</td>
+                                <td>String/Integer</td>
+                                <td>mLab ID or Int for Original ID</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </prop>
+            </section>
+        </desc>        
+        <exs>
+            <blockquote>
+                <p>https://hiptop.herokuapp.com/getAlbumByIdHybrid</p>
+                <p><br>{ <br>
+                    &nbsp;&nbsp;albumId : 5975f65be33a59d85e114033<br>                   
+                    }</p>
+            </blockquote><br>
+            <blockquote>
+                <p>The HTTP request returns JSON structured like this:</p>
+            </blockquote>
+            <pre class="hjson3" >
+                
+            </pre>
+        </exs>
+    </main>
+    <main>
+        <desc>
+            <section>
+                    <h1>
+                        <a name="addFollower">addFollower</a>
+                    </h1>
+                <prop>
+                    <h2>
+                        Description:
+                    </h2>
+                    <h3>
+                        adds follower to artist<br>
+                        both sides gets updated
+                    </h3>
+                </prop>
+                <prop>
+                    <h2>
+                        HTTP Request:
+                    </h2>
+                    <code class="prettyprint">
+                        POST https://hiptop.herokuapp.com/addFollower
+                    </code>        
+                </prop>
+                <prop>
+                    <h2>
+                        Query Parameters
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>userId</td>
+                                <td>String</td>
+                                <td>User mLabID</td>
+                            </tr>
+                            <tr>
+                                <td>artistId</td>
+                                <td>String</td>
+                                <td>Artist mLabID</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </prop>
+            </section>
+        </desc>        
+        <exs>
+            <blockquote>
+                <p>https://hiptop.herokuapp.com/addFollower</p>
+                <p><br>{ <br>
+                    &nbsp;&nbsp;userId : 59763f133ff049e14fe12967,<br>                   
+                    &nbsp;&nbsp;artistId : 59762fbe286b83de6e5e8400<br>                   
+                    }</p>
+            </blockquote><br>
+            <blockquote>
+                <p>The HTTP request returns JSON structured like this:</p>
+            </blockquote>
+            <pre class="hjson3" >
+                
+            </pre>
+        </exs>
+    </main>
+    <main>
+        <desc>
+            <section>
+                    <h1>
+                        <a name="getRandomFromGenre">getRandomFromGenre</a>
+                    </h1>
+                <prop>
+                    <h2>
+                        Description:
+                    </h2>
+                    <h3>
+                        gets 5 random songs from each genre from<br>
+                        { Pop , Adult Contemporary , Britpop , Pop/Rock , Teen Pop }
+                    </h3>
+                </prop>
+                <prop>
+                    <h2>
+                        HTTP Request:
+                    </h2>
+                    <code class="prettyprint">
+                        POST https://hiptop.herokuapp.com/getRandomFromGenre
+                    </code>        
+                </prop>
+<!--
+                <prop>
+                    <h2>
+                        Query Parameters
+                    </h2>
+                    <table>
+                        
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>userId</td>
+                                <td>String</td>
+                                <td>User mLabID</td>
+                            </tr>
+                            <tr>
+                                <td>artistId</td>
+                                <td>String</td>
+                                <td>Artist mLabID</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </prop>
+-->
+            </section>
+        </desc>        
+        <exs>
+            <blockquote>
+                <p>https://hiptop.herokuapp.com/getRandomFromGenre</p>
+<!--
+                <p>
+                    <br>{ <br>
+                    &nbsp;&nbsp;userId : 59763f133ff049e14fe12967,<br>                   
+                    &nbsp;&nbsp;artistId : 59762fbe286b83de6e5e8400<br>                   
+                    }
+                </p>
+-->
+            </blockquote><br>
+            <blockquote>
+                <p>The HTTP request returns JSON structured like this:</p>
+            </blockquote>
+            <pre class="hjson3" >
+                
+            </pre>
+        </exs>
+    </main>
+    <main>
+        <desc>
+            <section>
+                    <h1>
+                        <a name="addPopAlbum">addPopAlbum</a>
+                    </h1>
+                <prop>
+                    <h2>
+                        Description:
+                    </h2>
+                    <h3>
+                        This search the album of the specified artist name (Input:String)<br>
+                         in the iTunes API<br><br>
+
+                         &nbsp;1. Creates New Album<br>
+                         &nbsp;2. Creates related Songs to the album<br>
+                         &nbsp;3. Update Album<br>
+                         &nbsp;4. Creates New User (as the album Artist:User)<br>
+                    </h3>
+                </prop>
+                <prop>
+                    <h2>
+                        HTTP Request:
+                    </h2>
+                    <code class="prettyprint">
+                        POST https://hiptop.herokuapp.com/addPopAlbum
+                    </code>        
+                </prop>
+                <prop>
+                    <h2>
+                        Query Parameters
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>name</td>
+                                <td>String</td>
+                                <td>Artist Name</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </prop>
+            </section>
+        </desc>        
+        <exs>
+            <blockquote>
+                <p>https://hiptop.herokuapp.com/addPopAlbum</p>
+                <p>
+                    <br>{ <br>
+                    &nbsp;&nbsp;name : Lindsay+Lohan<br>                   
+                    }
+                </p>
+            </blockquote><br>
+            <blockquote>
+                <p>The HTTP request returns JSON structured like this:</p>
+            </blockquote>
+            <pre class="hjson3" >
+                
+            </pre>
+        </exs>
+    </main>
+    
     <main>
         <desc>
             <section>

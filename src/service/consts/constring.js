@@ -28,6 +28,9 @@ module.exports =
       },
       {
         "title": "wrong password"
+      },
+      {
+        "title" : "cant update"
       }
     ]
   };

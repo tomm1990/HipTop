@@ -1,16 +1,23 @@
 const mongoose = require('mongoose'),
+  Song = require('./Song'),
+  Comment = require('./Comment'),
+  User = require('./User'),
+
   schema = mongoose.Schema,
   autoIncrement = require('../database'),  // Album Schema
   albumSchema = new schema({
-    id: {type: Number, index: 1, required: true, unique: true, default: 701, min: 700},
-    author: Array,
-    title: String,
-    urlSrc: String,
-    likes: [Number],
-    genre: String,
-    imgUrl: String,
-    comment: [Number],
-    songId: [Number]
+    id:             { type: Number, index: 1, required: true, unique: true, default: 701, min: 700},
+    author:         { type:[schema.ObjectId] , ref: User },
+    title:          String,
+    urlSrc:         String,
+    likes:          { type:[schema.ObjectId] , ref: User },
+    genre:          String,
+    imgUrl:         String,
+    comment:        { type:[schema.ObjectId] , ref: Comment },
+    songId:         { type:[schema.ObjectId] , ref: Song },
+    iartistId:      String,
+    icollectionId:  String,
+    iamgArtistId:   String
   }, {collection: 'album'});
 
 // auto increment id function
@@ -35,7 +42,7 @@ albumSchema.path('id').validate(
     // this runs second
     console.log(`schema :: validating id : ${val}`);
     let iVal = Number(val);
-    return iVal>700 && iVal<800;
+    return true;
   },"schema :: Unable to create new album with this id");
 
 albumSchema.pre('save',
