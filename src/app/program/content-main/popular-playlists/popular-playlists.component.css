@@ -1,4 +1,7 @@
 .col-md-12{
-  background:#367F6C;
-  background-size: 100vw;
+  background-image: url('../../../../assets/image/mainBack.png');
+  background-size: 100%;
+}
+h3{
+  color:white;
 }

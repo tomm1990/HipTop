@@ -71,8 +71,11 @@ albumWall:AlbumWall;
          "../../assets/image/profile-img.jpg",
 
        ["gunre1","gunre2"]);
-       this.albumWall.likes.push(user);
-       this.AlbuService.insertLikeToDB('1',this.id);
+
+       this.AlbuService.insertLikeToDB('edsheeran@edsheeran.com',this.id).then((res: string)=>{
+         this.albumWall.likes.push(user);
+       });
+
 
   }
 

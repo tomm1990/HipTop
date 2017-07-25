@@ -104,7 +104,13 @@ insertLikeToDB(email:string,albumid:string){
 changeAppState(){
   //return "program";
 }
-getSongsToRate(){
-  return this.songs;
+
+getSongsToRate():Promise <Song[]> {
+  return this.http.post('https://hiptop.herokuapp.com/getRandomFromGenre',{})
+        .toPromise()
+        .then(response => response.json() as Song[])
+  .catch(err => err.json() as Song[]);
+
+  //return this.songs;
 }
 }

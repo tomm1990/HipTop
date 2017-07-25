@@ -2,9 +2,6 @@ import { Component, OnInit,EventEmitter,Output } from '@angular/core';
 import { Song } from '../../app-shared/model/song.model';
 import {AlbumService} from "../../app.AlbumService";
 
-
-
-
 @Component({
   selector: 'app-genre-rating',
   templateUrl: 'genre-rating.component.html',
@@ -14,6 +11,7 @@ export class GenreRatingComponent implements OnInit {
 @Output() changeMode = new EventEmitter<string>();
   songs: Song[];
   i:number=0;
+  src:string ="https://www.youtube.com/embed/";
   genreRaited:string[]=[];
   ratingOver:string;
   constructor(private AlbuService:AlbumService) { }
@@ -21,8 +19,14 @@ export class GenreRatingComponent implements OnInit {
 
   ngOnInit() {
     this.ratingOver="false";
-    this.songs = this.AlbuService.getSongsToRate();
-    console.log(this.songs);
+
+    this.AlbuService.getSongsToRate().then((song: Song[])=>{
+      this.songs = song;
+       console.log("song id ->" + this.songs[0].title);
+    });
+
+    //this.songs = this.AlbuService.getSongsToRate();
+    //console.log(this.songs);
   }
 
   onGoToMain(){
@@ -32,8 +36,12 @@ export class GenreRatingComponent implements OnInit {
   }
 
   onGenreRated(rating:number){
+    document.getElementById('iframe')
+    this.ratingOver="true";
     //document.getElementById('iframe').src='https://www.youtube.com/embed/kJQP7kiw5Fk?autoplay=true';
     if(this.i<5){
+
+      //document.getElementById("iframe_id").src ="https://www.youtube.com/embed/kJQP7kiw5Fk?autoplay=1"
       if(rating>3){
         console.log(rating + ' gt 3');
         this.genreRaited.push(this.songs[this.i].genre);

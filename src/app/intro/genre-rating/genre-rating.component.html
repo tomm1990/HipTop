@@ -1,5 +1,5 @@
-
-<div class="col-md-5">
+<body class="col-md-12">
+<div class="col-md-5 topManual">
   <img src=".\assets\image\step_bar.png" alt="">
   <h3>Rate from 1 to 5</h3>
   <h3>this Hip-Hop sub genre</h3>
@@ -10,10 +10,12 @@
   <img src="../assets/image/pexels-photo-205926.png" alt="" class="img-responsive">
 </div>
 <div class="container col-md-8 col-md-offset-2">
-  <app-music-player class="col-md-4"></app-music-player>
-  <div class="thumbnail col-md-6 ">
-    <img src="../assets/image/maxresdefault.jpg" alt="">
-    <div class="col-md-12">
+  <app-music-player
+    *ngIf="songs"
+  class="col-md-4"></app-music-player>
+  <div class="thumbnail col-md-6">
+    <img *ngIf="songs" src="{{songs[0].imgSrc}}" alt="">
+    <div class="col-md-12 col-md-offset-3">
      <button type="button" (click)="onGenreRated(1)"
              class="btn btn-sm btn-default ">1</button>
      <button type="button" (click)="onGenreRated(2)"
@@ -33,3 +35,11 @@
     <a href="">skip</a>
   </div>
 </div>
+<div *ngIf="songs">
+  <iframe  *ngIf="i==0"  width="640" height="360" src="https://www.youtube.com/embed/kJQP7kiw5Fk?autoplay=1" frameborder="0" allowfullscreen></iframe>
+  <iframe  *ngIf="i==1"  width="640" height="360" src="https://www.youtube.com/embed/SXiSVQZLje8?autoplay=1" frameborder="0" allowfullscreen></iframe>
+  <iframe  *ngIf="i==2"  width="640" height="360" src="https://www.youtube.com/embed/JGwWNGJdvx8?autoplay=1" frameborder="0" allowfullscreen></iframe>
+  <iframe  *ngIf="i==3"  width="640" height="360" src="https://www.youtube.com/embed/fwK7ggA3-bU?autoplay=1" frameborder="0" allowfullscreen></iframe>
+  <iframe  *ngIf="i==4"  width="640" height="360" src="https://www.youtube.com/embed/NGLxoKOvzu4?autoplay=1" frameborder="0" allowfullscreen></iframe>
+</div>
+</body>

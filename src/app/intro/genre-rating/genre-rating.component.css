@@ -14,12 +14,20 @@ h3:first-of-type{
 .thumbnail .btn:hover{
   background-color: #d7fff1;
 }
+.topManual{
+  margin-top:2vw;
+}
+.topManual img{
+  margin-bottom:2vw;
+}
 .col-md-5>p{
   color:white;
 }
+
 .thumbnail img{
   border:10px solid #FFFF00;
   margin-bottom:20px;
+  width:50%;
 }
 .btn{
   background: #FFFF00;
@@ -63,7 +71,10 @@ a{
   height:42px;
   width:42px;
 }
+body{
+  background: url('../../../assets/image/raitingBack.png');
 
+}
 
 .round p{
   position:relative;
@@ -75,5 +86,5 @@ a{
   background: white;
 }
 iframe{
-  //display: none;
+  display: none;
 }
