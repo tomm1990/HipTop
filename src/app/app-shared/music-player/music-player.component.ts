@@ -11,7 +11,7 @@ timer:string;
   constructor() { }
 
   ngOnInit() {
-    this.timer="1:24";
+    this.timer="3:24";
   }
 
 

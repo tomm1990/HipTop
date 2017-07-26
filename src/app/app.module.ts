@@ -41,10 +41,10 @@ import { AlbumToPlayComponent } from './app-shared/album-to-play/album-to-play.c
 import {CurrentSongService} from "./app-shared/current-song";
 
 const appRoutes : Routes = [
+  { path : '', redirectTo:'subGenreRating',pathMatch:'full'},
   { path : 'main/:ganre1/:ganre2' , component : ContentMainComponent },
   { path : 'album/:id' , component : AlbumWallComponent },
   { path : 'artist/:id' , component : ArtistWallComponent },
-  { path : '' , component : RootComponent},
   { path : 'signUp' , component : SignUpStep1Component},
   { path : 'subGenreRating' , component : GenreRatingComponent}
 ];

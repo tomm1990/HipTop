@@ -11,9 +11,9 @@
   <a routerLinkActive="active" routerLink="/album/{{album._id}}">
     <p>{{album.title}}</p>
   </a>
-  <span class="label label-default">{{album.id}}</span>
+  <span class="label label-default">0:00</span>
   <img src=".\assets\image\graph.png" alt="">
-  <span class="label label-default">{{album.id}}</span>
+  <span class="label label-default">{{album.songId[0].length}}</span>
   <div class="col-md-5 col-md-offset-3">
    <button type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Like</button>
    <button type="button" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Share</button>

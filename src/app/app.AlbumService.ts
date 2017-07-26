@@ -55,27 +55,13 @@ export class AlbumService{
 // "4","Pop")];
 
   constructor(private http:Http){}
-  /*
-   private getAlbumFromDB(){
-   return this.http.post('https://hiptop.herokuapp.com/getAllAlbums ','')
-   .subscribe(
-   (response:Response)=>{
-   console.log("albums1="+response.json());
-   this.albums = response.json();
 
-   }
-   );
-   }
-   */
 
   getAlbumById(id:string):Promise <AlbumWall>{
     return this.http.post('https://hiptop.herokuapp.com/getAlbumByIdHybrid',{albumId:id})
       .toPromise()
       .then(response => response.json() as AlbumWall)
       .catch(err => err.json() as AlbumWall);
-    //this.albumWall.comment[0].date=new Date(Date.now()-aDay)
-    // console.log('in server' + id);
-    //return this.albumWall;
   }
 
   getAlbum(limit:number, genre:string):Promise <Album[]>{
@@ -86,9 +72,6 @@ export class AlbumService{
   }
 
   insertCommentToDB(userId:string,message:string,albumId:string):Promise <string>{
-    console.log(`userId -> ${userId}`);
-    console.log(`message -> ${message}`);
-    console.log(`albumId -> ${albumId}`);
     return this.http.post('https://hiptop.herokuapp.com/addCommentToAlbum',{userId:userId,message:message,albumId:albumId})
       .toPromise()
       .then(response => response.json())
@@ -105,7 +88,10 @@ export class AlbumService{
   changeAppState(){
     //return "program";
   }
-  getSongsToRate(){
-    return this.songs;
+  getSongsToRate():Promise <Song[]>{
+    return this.http.post('https://hiptop.herokuapp.com/getRandomFromGenre',{})
+      .toPromise()
+      .then(response => response.json() as Song[])
+      .catch(err => err.json() as Song[]);
   }
 }

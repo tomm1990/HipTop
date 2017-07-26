@@ -17,8 +17,9 @@ export class Album {
   //   this.imgPath = image;
   // }
 
-  constructor(id: string, author: string[], title: string, urlSrc: string, likes: string[], genre: string, imgUrl: string, comment: string[], songId: string[]) {
+  constructor(public _id:string,id: string, author: string[], title: string, urlSrc: string, likes: string[], genre: string, imgUrl: string, comment: string[], songId: string[]) {
     console.log("constractor " + author);
+    this._id = _id;
     this.id = id;
     this.author = author;
     this.title = title;

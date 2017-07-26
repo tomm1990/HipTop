@@ -18,10 +18,7 @@ export class CommentsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    //console.log(`albumWall.comment.length -> ${this.albumWall.comment.length}`);
-    for(let i=0 ; i < this.albumWall.comment.length ; i++){
-      //console.log(`this.albumWall.comment[${i}].user.name -> ${this.albumWall.comment[i].user.name}`);
-    }
+
   }
 
   onAddComment(){
@@ -35,13 +32,11 @@ export class CommentsComponent implements OnInit {
     [1],
     'googId',
     ['1'],
-    '../../../assets/image/profile-img.jpg',
+    'http://shenkar.html5-book.co.il/2016-2017/rs/dev_184/assets/image/profile-img.jpg',
     ['genre']
               );
 
-    //constructor(id: string, user: User, message: string, date: Date) {
-    //console.log(`this.newUser -> ${this.newUser.name}`);
-    //console.log(`this.newUser -> ${this.newUser[0].name}`);
+
 
 
 

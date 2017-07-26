@@ -34,9 +34,13 @@
       <img *ngFor="let imgLike of albumWall.likes"
            src="{{imgLike.imgSrc}}"class="img-responsive" alt="">
     </div>
-    <div class="thumbnail">
-      <p class="col-md-7">Related tracks</p>
-      <p class="col-md-5">view all</p>
+    <div class="panel panel-default">
+      <div class="panel-heading">In playlist
+        <a href="" class="col-md-offset-6">View all</a>
+      </div>
+      <div class="panel-body">
+        <img src="http://shenkar.html5-book.co.il/2016-2017/rs/dev_184/assets/image/related.png" alt="" class="col-md-12">
+      </div>
     </div>
 
     <div class="panel panel-default">
