@@ -20,10 +20,12 @@ export class GenreRatingComponent implements OnInit {
   ngOnInit() {
     this.ratingOver="false";
 
-    this.AlbuService.getSongsToRate().then((song: Song[])=>{
-      this.songs = song;
-       console.log("song id ->" + this.songs[0].title);
-    });
+    this.songs = this.AlbuService.getSongsToRate();
+    console.log(`GenreRatingComponent ::ngOnInit() -> this.songs -> ${this.songs}`);
+    // .then((song: Song[])=>{
+    //   this.songs = song;
+    //    console.log("song id ->" + this.songs[0].title);
+    // });
 
     //this.songs = this.AlbuService.getSongsToRate();
     //console.log(this.songs);

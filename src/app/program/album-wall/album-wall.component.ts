@@ -6,6 +6,8 @@ import {AlbumWall} from "../../app-shared/model/albumWall.model";
 import {CommentData} from "../../app-shared/model/commentData.model";
 import {Album} from "../../app-shared/model/album.model";
 import {User} from "../../app-shared/model/user.model";
+import {FooterPlayerComponent} from "../footer-player/footer-player.component";
+import {AlbumToPlayComponent} from "../../app-shared/album-to-play/album-to-play.component";
 
 @Component({
   selector: 'app-album-wall',
@@ -13,10 +15,16 @@ import {User} from "../../app-shared/model/user.model";
   styleUrls: ['./album-wall.component.css']
 })
 export class AlbumWallComponent implements OnInit {
-album:Album[];
-albumWall:AlbumWall;
-  constructor(private route:ActivatedRoute,private AlService:GetAlbumService,
-              private AlbuService:AlbumService) { }
+  album:Album[];
+  albumWall:AlbumWall;
+  constructor(private route:ActivatedRoute,
+              private AlService:GetAlbumService,
+              private AlbuService:AlbumService,
+              public albumToPlay : AlbumToPlayComponent,
+              public footerPlayer : FooterPlayerComponent) {
+    this.albumToPlay = albumToPlay;
+    this.footerPlayer = footerPlayer;
+  }
 
   id:string;
 
@@ -25,14 +33,14 @@ albumWall:AlbumWall;
     this.route.params.subscribe(
       (params:Params)=>{
         this.id = params['id'];
-    //    console.log('id param' + this.id);
+        //    console.log('id param' + this.id);
       }
     );
     this.AlbuService.getAlbumById(this.id).then((albumWall1: AlbumWall)=>{
       this.albumWall = albumWall1[0];
-    //  console.log(`albumWall.comment.length -> ${this.albumWall.comment.length}`);
-    //  console.log(`albumWall.comment[0].user.title -> ${this.albumWall.comment[0].user.title}`);
-    //  console.log(`albumWall.comment[1].user.title -> ${this.albumWall.comment[1].user.title}`);
+      //  console.log(`albumWall.comment.length -> ${this.albumWall.comment.length}`);
+      //  console.log(`albumWall.comment[0].user.title -> ${this.albumWall.comment[0].user.title}`);
+      //  console.log(`albumWall.comment[1].user.title -> ${this.albumWall.comment[1].user.title}`);
 
       for(let i=0 ;i<this.albumWall.comment.length;i++){
         //this.albumWall.comment[i] = new CommentData();
@@ -60,25 +68,32 @@ albumWall:AlbumWall;
   }
   onAddLike(){
     const user = new User ("name",
-         "title",
-         "email",
-         "pass",
-         "type",
-         [701,702],
-         [1,2,3,4],
-         "googleId",
-         ["follow1","follow2","follow3","foolow4","follow5"],
-         "../../assets/image/profile-img.jpg",
+      "title",
+      "email",
+      "pass",
+      "type",
+      [701,702],
+      [1,2,3,4],
+      "googleId",
+      ["follow1","follow2","follow3","foolow4","follow5"],
+      "../../assets/image/profile-img.jpg",
 
-       ["gunre1","gunre2"]);
-
-       this.AlbuService.insertLikeToDB('edsheeran@edsheeran.com',this.id).then((res: string)=>{
-         this.albumWall.likes.push(user);
-       });
-
+      ["gunre1","gunre2"]);
+    this.albumWall.likes.push(user);
+    this.AlbuService.insertLikeToDB('1',this.id);
 
   }
 
+  onPlayAlbum(albumWall : AlbumWall){
+    this.albumToPlay.change(albumWall);
 
+    this.footerPlayer.onClick();
+
+
+    console.log(`onPlayAlbum() `);
+    //albumToPlay = this.albumWall;
+    // send to footer player
+    // this.albumWall
+  }
 
 }

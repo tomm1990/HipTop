@@ -18,7 +18,6 @@
             <ul>
                 <a href="#getAllAlbums"><li>Get All Albums</li></a>
                 <a href="#removeAllAlbums"><li>Remove All Albums</li></a>
-                <a href="#saveNewAlbum"><li>Save New Album</li></a>
                 <a href="#getAllSongs"><li>Get All Songs</li></a>
                 <a href="#getSongsByAlbumName"><li>Get Songs By Album's Name</li></a>
                 <a href="#saveNewSong"><li>Save New Song</li></a>
@@ -34,6 +33,7 @@
                 <a href="#addFollower"><li>Add Follower to Artist</li></a>
                 <a href="#getRandomFromGenre"><li>Get 5 Random Songs</li></a>
                 <a href="#addPopAlbum"><li>Add Album From iTunes API</li></a>
+                <a href="#searchSongsInYoutube"><li>Search Songs In Youtube API</li></a>
                 
                 <a href="#Error"><li>Error Handler</li></a>
             </ul>
@@ -127,6 +127,7 @@
         </exs>
     
     </main>
+<!--
     <main>
         <desc>
             <section>
@@ -231,6 +232,7 @@
         </exs>
     
     </main>
+-->
     <main>
         <desc>
             <section>
@@ -1450,6 +1452,76 @@
             </pre>
         </exs>
     </main>
+    
+    <main>
+        <desc>
+            <section>
+                    <h1>
+                        <a name="searchSongsInYoutube">searchSongsInYoutube</a>
+                    </h1>
+                <prop>
+                    <h2>
+                        Description:
+                    </h2>
+                    <h3>
+                        This will build search strings to look for YouTube API<br>
+                        updates each song for [urlSrc] videoID and [imgSrc] image source<br><br>
+
+                         &nbsp;1. Finds all songs<br>
+                         &nbsp;2. Creates array of search strings<br>
+                         &nbsp;3. Updates all songs<br>
+                    </h3>
+                </prop>
+                <prop>
+                    <h2>
+                        HTTP Request:
+                    </h2>
+                    <code class="prettyprint">
+                        POST https://hiptop.herokuapp.com/searchSongsInYoutube
+                    </code>        
+                </prop>
+<!--
+                <prop>
+                    <h2>
+                        Query Parameters
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>name</td>
+                                <td>String</td>
+                                <td>Artist Name</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </prop>
+-->
+            </section>
+        </desc>        
+        <exs>
+            <blockquote>
+                <p>https://hiptop.herokuapp.com/searchSongsInYoutube</p>
+                <p>
+                    
+                </p>
+            </blockquote><br>
+            <blockquote>
+                <p>The HTTP request returns JSON structured like this:</p>
+            </blockquote>
+            <pre class="hjson3" >
+                
+            </pre>
+        </exs>
+    </main>
+    
+    
     
     <main>
         <desc>

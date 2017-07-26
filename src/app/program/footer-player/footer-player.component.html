@@ -1,31 +1,48 @@
 <div class="col-md-10 col-md-offset-1 wraper">
-  <div class="col-md-3">
-    <img src=".\assets\image\player.png" class="img-responsive" alt="">
-  </div>
-  <div class="col-md-5">
-    <img src="../../assets/image/AlbumCover.png" class="col-md-2 playerImg" alt="">
-    <p>test</p>
-    <h3>test</h3>
-    <div class="panel panel-default ">
-      <div class="panel-body">
-        <div class="row">
-        <p class="col-md-2 text-center" for="">1:00</p>
-        <div class="progress col-md-8">
-            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <p class="col-md-2 text-center" for="">1:00</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="thumbnail col-md-12">
-      <p>1 song1</p>
-      <p>1 song1</p>
-      <p>1 song1</p>
-      <p>1 song1</p>
-      <p>1 song1</p>
-      <p>1 song1</p>
-    </div>
-  </div>
+
+  <app-player-details
+  [currentSong]="albumInFooter.songId[0]"
+  >
+
+  </app-player-details>
+
+  <!--<div class="col-md-3 temp">-->
+    <!--<img src="../../assets/image/player.png" class="img-responsive" alt="">-->
+    <!--<div class="play" (click)="play()"></div>-->
+    <!--<div class="stop" (click)="stop()"></div>-->
+    <!--<div class="next" (click)="next()"></div>-->
+    <!--<div class="prev" (click)="prev()"></div>-->
+  <!--</div>-->
+  <!--<div class="col-md-5 temp">-->
+    <!--<img src="../../assets/image/AlbumCover.png" class="col-md-2 playerImg" alt="">-->
+    <!--<p>test</p>-->
+    <!--<h3>test</h3>-->
+    <!--<div class="panel panel-default ">-->
+      <!--<div class="panel-body">-->
+        <!--<div class="row">-->
+        <!--<p class="col-md-2 text-center" for="">1:00</p>-->
+        <!--<div class="progress col-md-8">-->
+            <!--<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>-->
+        <!--</div>-->
+        <!--<p class="col-md-2 text-center" for="">1:00</p>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+
+  <app-player-list
+    >
+
+  </app-player-list>
+
+  <!--<div class="col-md-3">-->
+    <!--<div class="thumbnail col-md-12">-->
+      <!--<p>1 song1</p>-->
+      <!--<p>1 song1</p>-->
+      <!--<p>1 song1</p>-->
+      <!--<p>1 song1</p>-->
+      <!--<p>1 song1</p>-->
+      <!--<p>1 song1</p>-->
+    <!--</div>-->
+  <!--</div>-->
 </div>

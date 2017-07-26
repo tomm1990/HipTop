@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { YoutubePlayerModule } from 'ng2-youtube-player';
+
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -31,7 +33,12 @@ import { CommentComponent } from './program/album-wall/comments/comment/comment.
 import { GetAlbumService } from './app.GetAlbumService'
 import { GetArtistService } from './app.GetUserService';
 import { RootComponent } from './intro/root/root.component';
-import { SignUpStep1Component } from './intro/sign-up-step1/sign-up-step1.component'
+import { SignUpStep1Component } from './intro/sign-up-step1/sign-up-step1.component';
+import { PlayerDetailsComponent } from './program/footer-player/player-details/player-details.component';
+import { PlayerListComponent } from './program/footer-player/player-list/player-list.component';
+import { PlayerListItemComponent } from './program/footer-player/player-list/player-list-item/player-list-item.component';
+import { AlbumToPlayComponent } from './app-shared/album-to-play/album-to-play.component'
+import {CurrentSongService} from "./app-shared/current-song";
 
 const appRoutes : Routes = [
   { path : 'main/:ganre1/:ganre2' , component : ContentMainComponent },
@@ -68,18 +75,30 @@ const appRoutes : Routes = [
     CommentsComponent,
     CommentComponent,
     RootComponent,
-    SignUpStep1Component
+    SignUpStep1Component,
+    PlayerDetailsComponent,
+    PlayerListComponent,
+    PlayerListItemComponent,
+    AlbumToPlayComponent
   ],
   imports: [
-    RouterModule.forRoot(appRoutes),
     BrowserModule,
+    YoutubePlayerModule,
+    RouterModule.forRoot(appRoutes),
     FormsModule,
-    HttpModule,
+    HttpModule
   ],
   exports:[
     RouterModule
   ],
-  providers: [AlbumService,SignInService,GetAlbumService,GetArtistService],
+  providers: [
+    AlbumService,
+    SignInService,
+    GetAlbumService,
+    GetArtistService,
+    AlbumToPlayComponent,
+    PlayerDetailsComponent,
+    CurrentSongService,FooterPlayerComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,15 +1,10 @@
 /*.panel{*/
-  /*background: #1FCEA8;*/
-  /*border: transparent;*/
+/*background: #1FCEA8;*/
+/*border: transparent;*/
 /*}*/
 /*.panel-body p{*/
-  /*margin-bottom: 0px;*/
+/*margin-bottom: 0px;*/
 /*}*/
-
-/* Need to delete the follows .wraper */
-.wraper{
-
-}
 .progress{
   margin-bottom: 0px;
   height:1vw;
@@ -21,8 +16,8 @@
   padding:0.5vw;
 }
 /*.wraper{*/
-  /*margin-top: 20px;*/
-  /*margin-bottom: 20px;*/
+/*margin-top: 20px;*/
+/*margin-bottom: 20px;*/
 /*}*/
 h3{
   padding: 0px;
@@ -61,7 +56,7 @@ p{
 }
 
 .temp{
-  border:1px solid blue;
+
 }
 
 .play, .stop, .next, .prev{
@@ -74,23 +69,26 @@ p{
 .play{
   top : 37%;
   left : 27%;
-  border:1px solid red;
 }
 
 .stop{
   top : 37%;
   left : 16%;
-  border:1px solid brown;
 }
 
 .next{
   top : 16%;
   left : 27%;
-  border:1px solid green;
 }
 
 .prev{
   top : 16%;
   left : 16%;
-  border:1px solid black;
+}
+
+youtube-player{
+  display: none;
+  position: absolute;
+  top : 0 ;
+  left : 0 ;
 }

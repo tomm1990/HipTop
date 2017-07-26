@@ -45,6 +45,34 @@ exports.respondError = (err,res) => {
   return res.status(506).send(err);
 };
 
+/*
+   addPopAlbum
+     This search the album of the specified artist name (Input:String)
+     in the iTunes API
+
+     1. Creates New Album
+     2. Creates related Songs to the album
+     3. Update Album
+     4. Creates New User (as the album Artist:User)
+
+   @type
+     POST
+
+   @param
+     name      : String    // Artist Name separated with '+'
+                           // i.e 'Lindsay+Lohan'
+
+   @return
+     code 501 : json Error saving - cant save new album
+     code 507 : json Cant Update - Album with songs
+     code 508 : json Cant Save - Artist as new user
+     code 509 : json Cant Update - Album with artist
+     code 200 : json ok
+
+   @i.e
+     https://hiptop.herokuapp.com/addPopAlbum
+       { name : Lindsay+Lohan }
+ */
 exports.addPopAlbum = (req,res1)=>{
   console.log(`addPopAlbum()`);
   console.log(`req.body.name -> ${req.body.name}`);
@@ -87,6 +115,7 @@ exports.addPopAlbum = (req,res1)=>{
   });
 };
 
+// Starts adding Albums from Itunes API response
 function addAlbumFromItunes(rawData,res1){ // Creates new Album
   const parsedData = JSON.parse(rawData).results[0];
 

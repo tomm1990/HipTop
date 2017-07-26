@@ -11,10 +11,6 @@ export class CommentComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    //console.log(`this.comment.user -> ${this.comment.user}`);
-    //console.log(`this.comment.user.name -> ${this.comment.user.name}`);
-    //console.log(`this.comment.user.imgSrc -> ${this.comment.user.imgSrc}`);
-
 
   }
   timeSince(date) {

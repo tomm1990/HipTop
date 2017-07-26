@@ -7,7 +7,7 @@ import {AlbumService} from "./app.AlbumService";
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  loadedFeature = 'intro';
+  loadedFeature = 'program';
   //Output() userInstance : User;
 
 constructor(private AlService:AlbumService){}

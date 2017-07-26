@@ -1,5 +1,7 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output} from '@angular/core';
 import {Album} from "../../../../app-shared/model/album.model";
+import {AlbumToPlayComponent} from "../../../../app-shared/album-to-play/album-to-play.component";
+import {AlbumWall} from "../../../../app-shared/model/albumWall.model";
 
 @Component({
   selector: 'app-popular-item',
@@ -7,13 +9,14 @@ import {Album} from "../../../../app-shared/model/album.model";
   styleUrls: ['popular-item.component.css']
 })
 export class PopularItemComponent implements OnInit {
-  @Input() album : Album;
-  constructor() { }
+  @Input() @Output() album : AlbumWall;
+
+  constructor() {
+
+  }
 
   ngOnInit() {
   }
 
-  func(){
-      console.log('test');
-  }
+
 }

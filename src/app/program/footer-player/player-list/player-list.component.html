@@ -1,0 +1,18 @@
+<div class="col-md-3">
+  <div class="thumbnail col-md-12">
+
+    <app-player-list-item
+      *ngFor="let song of albumInFooter.songId"
+      [songItem]="song"
+      (songSelected)="songChoose(song)"
+    ></app-player-list-item>
+
+    <!--<p>1 song1</p>-->
+    <!--<p>1 song1</p>-->
+    <!--<p>1 song1</p>-->
+    <!--<p>1 song1</p>-->
+    <!--<p>1 song1</p>-->
+    <!--<p>1 song1</p>-->
+
+  </div>
+</div>

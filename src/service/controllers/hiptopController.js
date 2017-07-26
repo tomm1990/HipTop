@@ -44,6 +44,20 @@ exports.respondError = (err,res) => {
   return res.status(506).send(err);
 };
 
+/*
+   getAllAlbums
+     This endpoint retrieves all albums.
+
+   @type
+     POST
+
+   @param
+     -
+
+   @return
+     code 503 : json Unable to Find documents
+     code 200 : json All Albums
+*/
 exports.getAllAlbums = (req,res)=>{
     console.log('getAllAlbums() ::');
     Album.find({},
@@ -58,6 +72,48 @@ exports.getAllAlbums = (req,res)=>{
       }).catch((err,res) => exports.respondError(err,res));
 };
 
+/*
+   saveNewAlbum
+
+   @type
+   POST
+
+   @param
+   id : Number {700 < id < 800}
+   author: Array,
+   title: String,
+   urlSrc: String,
+   likes: [Number],
+   genre: String,
+   imgUrl: String,
+   comment: [Number],
+   songId: [Number]
+
+   @return
+   code 500 : json Unable to create document
+   code 404 : json Already Exists
+   code 501 : json Unable to save document
+   code 200 : json Album
+
+   @i.e
+   https://hiptop.herokuapp.com/saveNewAlbum
+   [id][701]
+   [author][Shlomi Shabat]
+   [author][Rita] // send twice to extend the array
+   [title][Yesh Lach]
+   [urlSrc][]
+   [likes][401] // users ID
+   [likes][402]
+   [likes][402]
+   [genre][pop]
+   [imgUrl][http://www.jewishagency.org/he/sites/default/files/styles/blog_slider/public/VOICES_RITA_32014.jpg?itok=RhoUD449]
+   [comment][801] // comments ID
+   [comment][802]
+   [comment][803]
+   [songId][402] // songs ID
+   [songId][403]
+   [songId][404]
+ */
 exports.saveNewAlbum = (req,res)=>{
   // Logs
   console.log(`saveNewAlbum() ::`);
@@ -112,6 +168,20 @@ exports.saveNewAlbum = (req,res)=>{
   }).catch((err,res) => exports.respondError(err,res));
 };
 
+/*
+   getAllSongs
+     This endpoint retrieves all songs.
+
+   @type
+     POST
+
+   @param
+     -
+
+   @return
+     code 503 : json Unable to Find documents
+     code 200 : json All Songs
+*/
 exports.getAllSongs = (req,res)=>{
     console.log('getAllSongs()');
     Song.find({},
@@ -126,6 +196,27 @@ exports.getAllSongs = (req,res)=>{
       }).catch((err,res) => exports.respondError(err,res));
 };
 
+/*
+   getSongsByAlbumName
+      This endpoint gets album by a given name
+
+   @type
+     POST
+
+   @param
+     name
+
+   @return
+     code 502 : json Unable to Search Albums documents
+     code 503 : json Unable to Find Albums documents
+     code 504 : json Unable to Search Songs documents
+     code 505 : json Unable to Find Songs documents
+     code 200 : json Songs
+
+   @i.e
+     https://hiptop.herokuapp.com/getSongsByAlbumName
+     [name][Lady Gaga]
+*/
 exports.getSongsByAlbumName = (req,res)=>{
     console.log('getAllSongs()');
     console.log(`req.body.name -> ${req.body.name}`);
@@ -159,6 +250,33 @@ exports.getSongsByAlbumName = (req,res)=>{
     }).catch((err,res) => exports.respondError(err,res));
 };
 
+/*
+   saveNewSong
+     saves new song
+
+   @type
+     POST
+
+   @param
+     author: [String],
+     title: String,
+     urlSrc: String,
+     length: String
+
+   @return
+     code 502 : json Unable to Search documents
+     code 501 : json Unable to save document
+     code 404 : json Already Exists
+     code 200 : json Song
+
+   @i.e
+     https://hiptop.herokuapp.com/saveNewSong
+     [author][Lady Gaga]
+     [author][Maroon 5]
+     [urlSrc][http://www] // Song Url
+     [imgSrc][http://www]
+     [length][03:20]
+*/
 exports.saveNewSong = (req,res)=>{
   console.log(`saveNewAlbum() ::`);
   console.log(`id : ${req.body.id}`);
@@ -206,6 +324,21 @@ exports.saveNewSong = (req,res)=>{
   }).catch( (err,res) => exports.respondError(err,res) );
 };
 
+/*
+   removeAllAlbums
+     This endpoint removes all albums.
+
+   @type
+     POST
+
+   @param
+     -
+
+   @return
+     code 502 : json Unable to Search documents
+     code 503 : json Unable to Find documents
+     code 200 : json Action Saved
+*/
 exports.removeAllAlbums = (req,res)=>{
   console.log('removeAllAlbums()');
   Album.find({}, // If exists
@@ -226,6 +359,24 @@ exports.removeAllAlbums = (req,res)=>{
   removeCounterIdentity("AlbumSchema");
 };
 
+/*
+   removeAllSongs
+     This endpoint removes all songs.
+
+   @type
+     POST
+
+   @param
+     -
+
+   @return
+     code 502 : json Unable to Search documents
+     code 503 : json Unable to Find documents
+     code 200 : json Action Saved
+
+   @i.e
+     https://hiptop.herokuapp.com/removeAllSongs
+*/
 exports.removeAllSongs = (req,res)=>{
   console.log('removeAllSongs()');
   Song.find({}, // If exists
@@ -246,6 +397,24 @@ exports.removeAllSongs = (req,res)=>{
   removeCounterIdentity("SongSchema");
 };
 
+/*
+   removeAllUsers
+     This endpoint removes all users.
+
+   @type
+     POST
+
+   @param
+     -
+
+   @return
+     code 502 : json Unable to Search documents
+     code 503 : json Unable to Find documents
+     code 200 : json Action Saved
+
+   @i.e
+     https://hiptop.herokuapp.com/removeAllUsers
+*/
 exports.removeAllUsers = (req,res)=>{
   console.log('removeAllUsers()');
   User.find({}, // If exists
@@ -265,6 +434,24 @@ exports.removeAllUsers = (req,res)=>{
     }).catch((err,res) => exports.respondError(err,res));
 };
 
+/*
+   getAmountAlbumByGenre
+     This endpoint retrieves specific amount of Albums by genre
+
+   @type
+     POST
+
+   @param
+     genre    : String
+     amount   : Number
+
+   @return
+     code 502 : json Unable to Search documents
+     code 200 : json albums
+
+   @i.e
+     https://hiptop.herokuapp.com/getAmountAlbumByGenre
+*/
 exports.getAmountAlbumByGenre = (req,res)=>{
   console.log('getAmountAlbumByGenre()');
   console.log(`req.body.genre -> ${req.body.genre} `);
@@ -283,6 +470,30 @@ exports.getAmountAlbumByGenre = (req,res)=>{
     .catch((err,res) => exports.respondError(err,res));
 };
 
+/*
+   signUpUser
+    sings new User
+
+   @type
+     POST
+
+   @param
+     name: String,
+     email: String,
+     password: String
+
+   @return
+     code 502 : json Unable to Search documents
+     code 404 : json Already Exists
+     code 501 : json Unable to save document
+     code 200 : json User
+
+   @i.e
+     https://hiptop.herokuapp.com/signUpUser
+     [name][Tom Goldberg]
+     [email][tom@goldberg.com]
+     [password][1234]
+*/
 exports.signUpUser = (req,res)=>{
   console.log('signUp() ::');
   console.log(`req.body.name : ${req.body.name}`);
@@ -340,6 +551,26 @@ exports.signUpUser = (req,res)=>{
   }).catch((err,res) => exports.respondError(err,res));
 };
 
+/*
+   login
+     This endpoint retrieves specific amount of Albums by genre
+
+   @type
+     POST
+
+   @param
+     email: String
+     password: String
+
+   @return
+     code 502 : json Unable to Search documents
+     code 403 : json of email not exists
+     code 404 : json of wrong password
+     code 200 : json User
+
+   @i.e
+     https://hiptop.herokuapp.com/removeAllUsers
+*/
 exports.login = (req,res)=>{
   console.log('login()');
   console.log(`req.body.email : ${req.body.email}`);
@@ -368,6 +599,29 @@ exports.login = (req,res)=>{
   }).catch((err,res) => exports.respondError(err,res));
 };
 
+/*
+   addLikeToAlbum
+     Adds like to an existing album
+
+   @type
+     POST
+
+   @param
+     email      : String    // This email add to (USER EMAIL ONLY)
+     albumid    : String    // this album
+
+   @return
+     code 504 : json Unable to search Email
+     code 404 : json Cant find Email
+     code 505 : json Unable to search Album
+     code 405 : json Cant find Album
+     code 406 : json already exists
+     code 507 : json cant update
+     code 200 : json ok
+
+   @i.e
+     https://hiptop.herokuapp.com/addLikeToAlbum
+*/
 exports.addLikeToAlbum = (req,res)=>{
   console.log('addLikeToAlbum()');
   console.log(`req.body.email : ${req.body.email}`);
@@ -485,6 +739,24 @@ exports.addLikeToAlbum = (req,res)=>{
     }
 };
 
+/*
+   getAllAlbumsConclusion
+     gets all albums by amount and genre
+
+   @type
+     POST
+
+   @param
+     limit       : Integer     // amount of results
+     genre       : String
+
+   @return
+     code 504 : json Unable to Search Albums documents
+     code 200 : json Album
+
+   @i.e
+     https://hiptop.herokuapp.com/getAllAlbumsConclusion
+*/
 exports.getAllAlbumsConclusion = (req,res)=>{
   console.log('getAllAlbumsConclusion()');
   console.log(`genre :: -> ${req.body.genre}`);
@@ -587,6 +859,27 @@ exports.getAllAlbumsConclusion = (req,res)=>{
   }
 };
 
+/*
+   getArtistById
+     get Artist By mLab ID
+
+   @type
+     POST
+
+   @param
+     id       : Integer     // Artist mLab ID ONLY
+
+   @return
+     code 401 : json Missing Params
+     code 404 : json Cant search
+     code 505 : json Album :: Cant find followers
+     code 506 : json Album :: Cant find likesAlbum
+     code 507 : json Album :: Cant find albumId
+     code 200 : json Artist
+
+   @i.e
+     https://hiptop.herokuapp.com/getArtistById
+*/
 exports.getArtistById = (req,res)=>{
   console.log('getArtistById()');
   console.log(`req.body.id :: -> ${req.body.id}`);
@@ -677,6 +970,29 @@ exports.getArtistById = (req,res)=>{
   }
 };
 
+/*
+   addCommentToAlbum
+     Creates new Comment and place it into Album comment
+
+   @type
+     POST
+
+   @param
+     userId         : String     // User ID who wrote the comment
+     message        : String     // User's message
+     albumId        : String     // Album to put the message within
+
+   @return
+     code 502 : json Missing Params
+     code 501 : json Error save
+     code 405 : json Cant find album to put comment within
+     code 406 : json Already Exists - comment already within
+     code 507 : json Cant Update album comments
+     code 200 : json ok
+
+   @i.e
+     https://hiptop.herokuapp.com/addCommentToAlbum
+*/
 exports.addCommentToAlbum = (req,res)=>{
   console.log('addCommentToAlbum()');
   console.log(`req.body.userId :: -> ${req.body.userId}`);
@@ -757,6 +1073,27 @@ exports.addCommentToAlbum = (req,res)=>{
 
 };
 
+/*
+   getAlbumByIdHybrid
+     Gets Albums by specific (String:) mLab ID or Original (Int:) ID
+
+   @type
+     POST
+
+   @param
+     albumId        : String for mLab ID or Int for Original ID
+
+   @return
+     code 404 : json Missing Params
+     code 505 : json Cant find authors to this album
+     code 506 : json Cant find likes to this album
+     code 507 : json Cant find comments to this album
+     code 508 : json Cant find songs to this album
+     code 200 : json ok
+
+   @i.e
+     https://hiptop.herokuapp.com/getAlbumByIdHybrid
+*/
 exports.getAlbumByIdHybrid = (req,res)=>{
   console.log('getAlbumById()');
   console.log(`req.body.albumId :: -> ${req.body.albumId}`);
@@ -869,6 +1206,28 @@ exports.getAlbumByIdHybrid = (req,res)=>{
   }
 };
 
+/*
+   getRandomFromGenre
+     gets 5 random songs from each genre from
+     { Pop , Adult Contemporary , Britpop , Pop/Rock , Teen Pop }
+
+   @type
+     POST
+
+   @param
+      -
+
+   @return
+     code 505 : json Cant Find - Pop song is missing
+     code 506 : json Cant Find - Adult Contemporary song is missing
+     code 507 : json Cant Find - Britpop song is missing
+     code 508 : json Cant Find - Pop/Rock song is missing
+     code 509 : json Cant Find - Teen Pop song is missing
+     code 200 : json ok
+
+   @i.e
+      https://hiptop.herokuapp.com/getRandomFromGenre
+*/
 exports.getRandomFromGenre = (req,res)=>{
   console.log('getRandomFromGenre()');
 
@@ -958,6 +1317,29 @@ exports.getRandomFromGenre = (req,res)=>{
   }
 };
 
+/*
+   addFollower
+     adds follower to artist
+     both sides gets updated
+
+   @type
+     POST
+
+   @param
+     userId      : String  // User mLabID | This user will follow
+     artistId    : String  //Artist mLabID  | this Artist
+
+   @return
+     code 505 : json Cant Search for user id
+     code 404 : json Already Exists - this user already follows this artist
+     code 506 : json Cant Update User - Server Issue
+     code 507 : json Cant Search for artist id
+     code 508 : json Cant Update Artist - Server Issue
+     code 200 : json ok
+
+   @i.e
+     https://hiptop.herokuapp.com/addFollower
+*/
 exports.addFollower = (req,res)=>{
   console.log(`addFollower()`);
   console.log(`req.body.userId -> ${req.body.userId}`);

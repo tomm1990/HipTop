@@ -3,60 +3,58 @@
     <img src="{{albumWall.imgUrl}}" alt="" class="col-md-3">
     <p>
       <a routerLinkActive="active" routerLink="/artist/{{artist._id}}"
-          *ngFor="let artist of albumWall.author">{{artist.name}} </a>
+         *ngFor="let artist of albumWall.author">{{artist.name}} </a>
     </p>
     <h3>{{albumWall.title}}</h3>
     <div class="col-md-6">
-     <button type="button" (click)="onAddLike()" class="btn btn-sm btn-default" id="likeBtn">
-       <span  class="glyphicon glyphicon-heart" aria-hidden="true"></span> Like</button>
-     <button type="button" class="btn btn-sm btn-default">
-       <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Share</button>
-     <button type="button" class="btn btn-sm btn-default">
-       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add to playlist</button>
+      <button type="button" (click)="onPlayAlbum(albumWall)" class="btn btn-sm btn-default" >
+        <span  class="glyphicon glyphicon-play" aria-hidden="true"></span> Play</button>
+      <button type="button" (click)="onAddLike()" class="btn btn-sm btn-default" id="likeBtn">
+        <span  class="glyphicon glyphicon-heart" aria-hidden="true"></span> Like</button>
+      <button type="button" class="btn btn-sm btn-default">
+        <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Share</button>
+      <button type="button" class="btn btn-sm btn-default">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add to playlist</button>
     </div>
   </div>
-  </div>
+</div>
 <div *ngIf="albumWall">
   <app-comments
     [albumWall]="albumWall"
     (commentAdded)="onCommentAdd($event)"></app-comments>
 
-<div  class="col-md-3">
-  <div class="thumbnail">
-    <p class="col-md-7">
-      {{albumWall.likes.length}}
-      <span class="glyphicon glyphicon-heart" aria-hidden="true">
+  <div  class="col-md-3">
+    <div class="thumbnail">
+      <p class="col-md-7">
+        {{albumWall.likes.length}}
+        <span class="glyphicon glyphicon-heart" aria-hidden="true">
       </span>
-    </p>
-    <p class="col-md-5">view all</p>
+      </p>
+      <p class="col-md-5">view all</p>
       <img *ngFor="let imgLike of albumWall.likes"
-            src="{{imgLike.imgSrc}}"class="img-responsive" alt="">
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">Related tracks
-      <a href="" class="col-md-offset-5">View all</a>
+           src="{{imgLike.imgSrc}}"class="img-responsive" alt="">
     </div>
-    <div class="panel-body">
-      <img src="../../assets/image/related.png" class="col-md-12" alt="">
-  </div>
-</div>
+    <div class="thumbnail">
+      <p class="col-md-7">Related tracks</p>
+      <p class="col-md-5">view all</p>
+    </div>
 
-  <div class="panel panel-default">
-    <div class="panel-heading">In playlist
-      <a href="" class="col-md-offset-6">View all</a>
+    <div class="panel panel-default">
+      <div class="panel-heading">In playlist
+        <a href="" class="col-md-offset-6">View all</a>
+      </div>
+      <div class="panel-body">
+        <div *ngIf="albumWall.songId[0]" class="songWraper">
+          <img src="{{albumWall.songId[0].imgSrc}}" class="col-md-4" alt="">
+          <p class="col-md-8">{{albumWall.songId[0].author}}</p>
+          <p class="col-md-8">{{albumWall.songId[0].title}}</p>
+        </div>
+        <div *ngIf="albumWall.songId[1]" class="songWraper">
+          <img src="{{albumWall.songId[1].imgSrc}}" class="col-md-4" alt="">
+          <p class="col-md-8">{{albumWall.songId[1].author}}</p>
+          <p class="col-md-8">{{albumWall.songId[1].title}}</p>
+        </div>
+      </div>
     </div>
-    <div class="panel-body">
-      <div *ngIf="albumWall.songId[0]" class="songWraper">
-        <img src="{{albumWall.songId[0].imgSrc}}" class="col-md-4" alt="">
-        <p class="col-md-8">{{albumWall.songId[0].author}}</p>
-        <p class="col-md-8">{{albumWall.songId[0].title}}</p>
-      </div>
-      <div *ngIf="albumWall.songId[1]" class="songWraper">
-        <img src="{{albumWall.songId[1].imgSrc}}" class="col-md-4" alt="">
-        <p class="col-md-8">{{albumWall.songId[1].author}}</p>
-        <p class="col-md-8">{{albumWall.songId[1].title}}</p>
-      </div>
   </div>
-</div>
-</div>
 </div>
